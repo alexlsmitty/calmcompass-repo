@@ -1,0 +1,3395 @@
+This file is a merged representation of the entire codebase, combined into a single document by Repomix.
+
+================================================================
+File Summary
+================================================================
+
+Purpose:
+--------
+This file contains a packed representation of the entire repository's contents.
+It is designed to be easily consumable by AI systems for analysis, code review,
+or other automated processes.
+
+File Format:
+------------
+The content is organized as follows:
+1. This summary section
+2. Repository information
+3. Directory structure
+4. Multiple file entries, each consisting of:
+  a. A separator line (================)
+  b. The file path (File: path/to/file)
+  c. Another separator line
+  d. The full contents of the file
+  e. A blank line
+
+Usage Guidelines:
+-----------------
+- This file should be treated as read-only. Any changes should be made to the
+  original repository files, not this packed version.
+- When processing this file, use the file path to distinguish
+  between different files in the repository.
+- Be aware that this file may contain sensitive information. Handle it with
+  the same level of security as you would the original repository.
+
+Notes:
+------
+- Some files may have been excluded based on .gitignore rules and Repomix's configuration
+- Binary files are not included in this packed representation. Please refer to the Repository Structure section for a complete list of file paths, including binary files
+- Files matching patterns in .gitignore are excluded
+- Files matching default ignore patterns are excluded
+- Files are sorted by Git change count (files with more changes are at the bottom)
+
+Additional Info:
+----------------
+
+================================================================
+Directory Structure
+================================================================
+.gitignore
+.repomix/bundles.json
+component-list.md
+eslint.config.js
+index.html
+package.json
+public/vite.svg
+README.md
+src/App.css
+src/App.tsx
+src/assets/react.svg
+src/common/Header.tsx
+src/index.css
+src/main.tsx
+src/mock-api-data/mock-api-data.json
+src/pages/account/AccountPage.tsx
+src/pages/bookings/BookingsPage.tsx
+src/pages/exercises/ExercisesPage.tsx
+src/theme/theme.ts
+src/vite-env.d.ts
+tsconfig.app.json
+tsconfig.json
+tsconfig.node.json
+vite.config.ts
+
+================================================================
+Files
+================================================================
+
+================
+File: .repomix/bundles.json
+================
+{
+  "bundles": {}
+}
+
+================
+File: component-list.md
+================
+Key Components for Therapist/Psychologist Office Marketing Website
+
+Hero Section
+
+Professional headline and welcoming introduction
+Clear value proposition
+High-quality, calming imagery
+Primary CTA button (e.g., "Book Appointment" or "Get Started")
+
+
+Practice Overview
+
+Brief introduction to the practice
+Philosophy of care and approach
+Unique selling points (what makes this practice different)
+Office environment description/images
+
+
+Services Section
+
+List of treatment specialties and services offered
+Brief descriptions of each therapy type
+Conditions treated
+Targeted populations (children, adults, couples, etc.)
+
+
+Practitioner Profiles
+
+Professional photos
+Credentials and education
+Specializations
+Brief professional bio
+Personal statement about their approach
+
+
+Testimonials/Success Stories
+
+Anonymous client testimonials
+Before/after scenarios (while maintaining confidentiality)
+Review ratings integration
+
+
+Insurance & Payment
+
+Insurance plans accepted
+Self-pay options
+Sliding scale information (if offered)
+Transparent pricing
+
+
+Location & Hours
+
+Office address with map integration
+Virtual session availability
+Business hours
+Parking/transportation information
+
+
+FAQ Section
+
+Common questions about therapy
+Practice-specific policies
+What to expect in first sessions
+
+
+Resources Section
+
+Mental health articles/blog
+Downloadable worksheets
+Crisis resources
+Recommended reading
+
+
+Contact/Booking CTA
+
+Clear call to action
+Contact form
+Direct phone number
+Email address
+Links to booking system
+
+
+Trust Indicators
+
+Professional associations and memberships
+Certifications and licenses
+HIPAA compliance information
+Data privacy assurances
+
+
+Mobile-Optimized Design
+
+Responsive layout that works on all devices
+Fast-loading pages
+Accessible design
+
+
+SEO Elements
+
+Location-based keywords
+Specialty keywords
+Structured data markup
+Meta descriptions and title tags
+Alt text for images
+
+================
+File: src/common/Header.tsx
+================
+import React, { useState } from 'react';
+import { 
+  AppBar, 
+  Toolbar, 
+  Typography, 
+  Button, 
+  IconButton, 
+  Box, 
+  Container,
+  Drawer,
+  List,
+  ListItem,
+  ListItemButton,
+  ListItemText,
+  Divider,
+  useMediaQuery,
+  styled
+} from '@mui/material';
+import { createTheme, ThemeProvider } from '@mui/material/styles';
+// Import from @mui/icons-material which you have in your dependencies
+import MenuIcon from '@mui/icons-material/Menu';
+import CalendarMonthIcon from '@mui/icons-material/CalendarMonth';
+import AccountCircleIcon from '@mui/icons-material/AccountCircle';
+import FitnessCenterIcon from '@mui/icons-material/FitnessCenter';
+import LogoutIcon from '@mui/icons-material/Logout';
+
+// Define types for the component props
+type NavigationOption = 'bookings' | 'account' | 'exercises' | 'login' | 'home';
+
+interface HeaderProps {
+  userName: string;
+  currentPage: NavigationOption;
+  onNavigate: (page: NavigationOption) => void;
+}
+
+// Create a custom theme with rounded elements
+const theme = createTheme({
+  palette: {
+    primary: {
+      main: '#2D6A4F', // Calm green
+      contrastText: '#FFFFFF',
+    },
+    secondary: {
+      main: '#E9C46A', // Warm amber
+      contrastText: '#333333',
+    },
+    background: {
+      default: '#FAFBFB',
+      paper: '#FFFFFF',
+    },
+    text: {
+      primary: '#333333',
+      secondary: '#666666',
+    },
+  },
+  typography: {
+    fontFamily: '"Nunito Sans", "Roboto", "Helvetica", "Arial", sans-serif',
+    fontSize: 16,
+    button: {
+      textTransform: 'none',
+      fontWeight: 600,
+    },
+  },
+  shape: {
+    borderRadius: 12, // More rounded corners
+  },
+  components: {
+    MuiButton: {
+      styleOverrides: {
+        root: {
+          borderRadius: 25, // Pills for buttons
+          padding: '8px 16px',
+        },
+      },
+    },
+    MuiAppBar: {
+      styleOverrides: {
+        root: {
+          boxShadow: '0px 4px 10px rgba(0, 0, 0, 0.05)',
+        },
+      },
+    },
+    MuiDrawer: {
+      styleOverrides: {
+        paper: {
+          borderTopRightRadius: 20,
+          borderBottomRightRadius: 20,
+        },
+      },
+    },
+  },
+});
+
+// Styled components
+const StyledAppBar = styled(AppBar)(({ theme }) => ({
+  boxShadow: 'none',
+  transition: 'all 0.3s ease',
+}));
+
+const NavButton = styled(Button)(({ theme }) => ({
+  margin: theme.spacing(0, 1),
+  padding: theme.spacing(0.5, 2),
+  borderRadius: 25,
+  transition: 'all 0.3s ease',
+  '&:hover': {
+    transform: 'translateY(-2px)',
+  },
+}));
+
+const LogoText = styled(Typography)(({ theme }) => ({
+  fontWeight: 700,
+  letterSpacing: '0.5px',
+  backgroundImage: 'linear-gradient(90deg, #2D6A4F, #74C69D)',
+  backgroundClip: 'text',
+  textFillColor: 'transparent',
+  WebkitBackgroundClip: 'text',
+  WebkitTextFillColor: 'transparent',
+  cursor: 'pointer',
+}));
+
+const TopBar = styled(Box)(({ theme }) => ({
+  backgroundColor: theme.palette.secondary.main,
+  padding: theme.spacing(1, 0),
+  transition: 'all 0.3s ease',
+}));
+
+const Header: React.FC<HeaderProps> = ({ userName, currentPage, onNavigate }) => {
+  const isMobile = useMediaQuery(theme.breakpoints.down('md'));
+  const [drawerOpen, setDrawerOpen] = useState(false);
+  
+  const handleDrawerToggle = () => {
+    setDrawerOpen(!drawerOpen);
+  };
+  
+  const handleNavClick = (page: NavigationOption) => {
+    onNavigate(page);
+    if (drawerOpen) setDrawerOpen(false);
+  };
+
+  // Navigation items with icons
+  const navItems = [
+    { label: 'Bookings', value: 'bookings', icon: <CalendarMonthIcon /> },
+    { label: 'My Account', value: 'account', icon: <AccountCircleIcon /> },
+    { label: 'Exercises', value: 'exercises', icon: <FitnessCenterIcon /> }
+  ];
+
+  return (
+    <ThemeProvider theme={theme}>
+      <Box sx={{ flexGrow: 1 }}>
+        {/* Welcome bar */}
+        <TopBar>
+          <Container maxWidth="xl">
+            <Box sx={{ 
+              display: 'flex', 
+              justifyContent: 'space-between', 
+              alignItems: 'center',
+              px: 2
+            }}>
+              <Typography variant="body2" sx={{ fontWeight: 500 }}>
+                Welcome back {userName}
+              </Typography>
+              <Button 
+                color="inherit" 
+                size="small" 
+                endIcon={<LogoutIcon />} 
+                onClick={() => handleNavClick('login')}
+                sx={{ 
+                  borderRadius: 20,
+                  '&:hover': {
+                    backgroundColor: 'rgba(0,0,0,0.08)'
+                  }
+                }}
+              >
+                Sign Out
+              </Button>
+            </Box>
+          </Container>
+        </TopBar>
+
+        {/* Main navigation */}
+        <StyledAppBar position="static" color="primary">
+          <Container maxWidth="xl">
+            <Toolbar disableGutters sx={{ py: 0.5 }}>
+              {/* Mobile menu icon */}
+              {isMobile && (
+                <IconButton
+                  size="large"
+                  edge="start"
+                  color="inherit"
+                  aria-label="menu"
+                  onClick={handleDrawerToggle}
+                  sx={{ mr: 2 }}
+                >
+                  <MenuIcon />
+                </IconButton>
+              )}
+
+              {/* Logo */}
+              <Box sx={{ 
+                flexGrow: { xs: 1, md: 0 }, 
+                display: 'flex',
+                alignItems: 'center'
+              }}>
+                <LogoText
+                  variant="h6"
+                  noWrap
+                  component="div"
+                  onClick={() => handleNavClick('home')}
+                  sx={{ mr: 2 }}
+                >
+                  CalmCompass
+                </LogoText>
+              </Box>
+
+              {/* Desktop navigation */}
+              {!isMobile && (
+                <Box sx={{ 
+                  flexGrow: 1, 
+                  display: 'flex', 
+                  justifyContent: 'center',
+                  gap: 1 
+                }}>
+                  {navItems.map((item) => (
+                    <NavButton
+                      key={item.value}
+                      color="inherit"
+                      onClick={() => handleNavClick(item.value as NavigationOption)}
+                      startIcon={item.icon}
+                      sx={{ 
+                        borderBottom: currentPage === item.value 
+                          ? `3px solid ${theme.palette.secondary.main}` 
+                          : '3px solid transparent',
+                        borderRadius: '20px 20px 0 0',
+                        backgroundColor: currentPage === item.value 
+                          ? 'rgba(255, 255, 255, 0.15)' 
+                          : 'transparent'
+                      }}
+                    >
+                      {item.label}
+                    </NavButton>
+                  ))}
+                </Box>
+              )}
+
+              {/* Book appointment button */}
+              {!isMobile && currentPage !== 'bookings' && (
+                <Button 
+                  variant="contained" 
+                  color="secondary" 
+                  onClick={() => handleNavClick('bookings')}
+                  startIcon={<CalendarMonthIcon />}
+                  sx={{ 
+                    borderRadius: 25,
+                    px: 3,
+                    boxShadow: '0px 4px 8px rgba(0,0,0,0.1)',
+                    '&:hover': {
+                      boxShadow: '0px 6px 12px rgba(0,0,0,0.15)',
+                      transform: 'translateY(-2px)'
+                    },
+                    transition: 'all 0.3s ease'
+                  }}
+                >
+                  Book Appointment
+                </Button>
+              )}
+            </Toolbar>
+          </Container>
+        </StyledAppBar>
+
+        {/* Mobile drawer menu */}
+        <Drawer
+          anchor="left"
+          open={drawerOpen}
+          onClose={handleDrawerToggle}
+          PaperProps={{
+            sx: { 
+              width: 280,
+              borderTopRightRadius: 16,
+              borderBottomRightRadius: 16,
+              px: 1
+            }
+          }}
+        >
+          <Box sx={{ p: 3 }}>
+            <LogoText variant="h6">
+              CalmCompass
+            </LogoText>
+          </Box>
+          <Divider />
+          <List sx={{ pt: 2 }}>
+            {navItems.map((item) => (
+              <ListItem key={item.value} disablePadding>
+                <ListItemButton
+                  selected={currentPage === item.value}
+                  onClick={() => handleNavClick(item.value as NavigationOption)}
+                  sx={{
+                    borderRadius: 8,
+                    my: 0.5,
+                    backgroundColor: currentPage === item.value 
+                      ? `${theme.palette.primary.main}15` 
+                      : 'transparent',
+                    '&:hover': {
+                      backgroundColor: `${theme.palette.primary.main}10`
+                    }
+                  }}
+                >
+                  <Box component="span" sx={{ mr: 2, color: theme.palette.primary.main }}>
+                    {item.icon}
+                  </Box>
+                  <ListItemText 
+                    primary={item.label} 
+                    primaryTypographyProps={{ 
+                      fontWeight: currentPage === item.value ? 600 : 400 
+                    }} 
+                  />
+                </ListItemButton>
+              </ListItem>
+            ))}
+
+            <Divider sx={{ my: 2 }} />
+
+            {currentPage !== 'bookings' && (
+              <ListItem disablePadding>
+                <ListItemButton
+                  onClick={() => handleNavClick('bookings')}
+                  sx={{ 
+                    borderRadius: 8,
+                    my: 0.5,
+                    backgroundColor: `${theme.palette.secondary.main}15`,
+                    '&:hover': {
+                      backgroundColor: `${theme.palette.secondary.main}25`
+                    }
+                  }}
+                >
+                  <Box component="span" sx={{ mr: 2, color: theme.palette.secondary.main }}>
+                    <CalendarMonthIcon />
+                  </Box>
+                  <ListItemText 
+                    primary="Book Appointment" 
+                    primaryTypographyProps={{ 
+                      color: 'secondary',
+                      fontWeight: 600
+                    }} 
+                  />
+                </ListItemButton>
+              </ListItem>
+            )}
+
+            <ListItem disablePadding>
+              <ListItemButton
+                onClick={() => handleNavClick('login')}
+                sx={{ 
+                  borderRadius: 8,
+                  my: 0.5
+                }}
+              >
+                <Box component="span" sx={{ mr: 2 }}>
+                  <LogoutIcon />
+                </Box>
+                <ListItemText primary="Sign Out" />
+              </ListItemButton>
+            </ListItem>
+          </List>
+        </Drawer>
+      </Box>
+    </ThemeProvider>
+  );
+};
+
+export default Header;
+
+================
+File: src/mock-api-data/mock-api-data.json
+================
+{
+{
+  "siteConfiguration": {
+    "colorScheme": {
+      "primary": "#2D6A4F",
+      "secondary": "#74C69D",
+      "accent": "#B7E4C7",
+      "text": "#333333",
+      "background": "#FFFFFF",
+      "lightBackground": "#F8FAF9"
+    },
+    "fonts": {
+      "headings": "Montserrat, sans-serif",
+      "body": "Open Sans, sans-serif"
+    },
+    "seo": {
+      "metaTitle": "Mindful Wellness Center | Mental Health Services in Portland, OR",
+      "metaDescription": "Compassionate mental health care in Portland. Our team of therapists provides evidence-based treatment for anxiety, depression, trauma, and more.",
+      "keywords": [
+        "therapy Portland",
+        "mental health Portland",
+        "anxiety treatment",
+        "depression therapy",
+        "couples counseling",
+        "family therapy",
+        "PTSD treatment",
+        "child therapy",
+        "Portland psychologist",
+        "Portland therapist"
+      ],
+      "googleAnalyticsId": "UA-123456789-1",
+      "structuredData": {
+        "type": "MedicalBusiness",
+        "includeOrganizationSchema": true,
+        "includePractitionerSchemas": true,
+        "includeLocationSchemas": true
+      }
+    },
+    "domain": "mindfulwellnesscenter.com",
+    "logoVariants": {
+      "primary": "/images/logo-primary.png",
+      "white": "/images/logo-white.png",
+      "favicon": "/images/favicon.ico"
+    },
+    "contactFormSettings": {
+      "recipientEmail": "info@mindfulwellnesscenter.com",
+      "autoResponderEnabled": true,
+      "autoResponderSubject": "Thank you for contacting Mindful Wellness Center",
+      "autoResponderTemplate": "templates/contact-autoresponder.html",
+      "formFields": [
+        "name",
+        "email",
+        "phone",
+        "preferredContactMethod",
+        "message",
+        "newClientStatus",
+        "insuranceProvider"
+      ]
+    },
+    "cookieConsentSettings": {
+      "enabled": true,
+      "policyLink": "/privacy-policy",
+      "necessaryCookiesOnly": false
+    },
+    "complianceSettings": {
+      "hipaaPrivacyNoticeLink": "/hipaa-privacy-notice",
+      "termsOfServiceLink": "/terms-of-service",
+      "accessibilityStatement": "/accessibility"
+    }
+  },
+  
+  "practice": {
+    "name": "Mindful Wellness Center",
+    "tagline": "Compassionate mental health care for your journey to wellness",
+    "description": "At Mindful Wellness Center, we believe in a holistic approach to mental health. Our dedicated team of professionals provides evidence-based therapy in a warm, supportive environment. Whether you're facing challenges with anxiety, depression, relationships, or life transitions, we're here to help you develop the tools for lasting wellbeing.",
+    "yearEstablished": 2015,
+    "logo": "/images/logo.png",
+    "phoneNumber": "(555) 123-4567",
+    "email": "info@mindfulwellnesscenter.com",
+    "website": "www.mindfulwellnesscenter.com",
+    "socialMedia": {
+      "facebook": "https://facebook.com/mindfulwellnesscenter",
+      "instagram": "https://instagram.com/mindfulwellness",
+      "twitter": "https://twitter.com/mindfulwellness",
+      "linkedin": "https://linkedin.com/company/mindfulwellnesscenter"
+    },
+    "officeImages": [
+      "/images/office/reception.jpg",
+      "/images/office/therapy-room-1.jpg",
+      "/images/office/therapy-room-2.jpg",
+      "/images/office/group-room.jpg",
+      "/images/office/exterior.jpg"
+    ]
+  },
+  "locations": [
+    {
+      "id": "loc-001",
+      "name": "Main Office",
+      "address": {
+        "street": "123 Healing Way",
+        "suite": "Suite 201",
+        "city": "Portland",
+        "state": "OR",
+        "zipCode": "97204",
+        "country": "USA"
+      },
+      "coordinates": {
+        "latitude": 45.5231,
+        "longitude": -122.6765
+      },
+      "phone": "(555) 123-4567",
+      "email": "info@mindfulwellnesscenter.com",
+      "accessibility": ["Wheelchair accessible", "Gender-neutral restrooms", "Service animals welcome"],
+      "parkingInfo": "Free parking available in the building garage. Street parking also available.",
+      "publicTransportInfo": "Accessible via bus routes 10 and 14. Two blocks from the Green Line light rail station.",
+      "hours": [
+        { "day": "Monday", "open": "8:00 AM", "close": "7:00 PM" },
+        { "day": "Tuesday", "open": "8:00 AM", "close": "7:00 PM" },
+        { "day": "Wednesday", "open": "8:00 AM", "close": "7:00 PM" },
+        { "day": "Thursday", "open": "8:00 AM", "close": "7:00 PM" },
+        { "day": "Friday", "open": "8:00 AM", "close": "6:00 PM" },
+        { "day": "Saturday", "open": "9:00 AM", "close": "2:00 PM" },
+        { "day": "Sunday", "open": "Closed", "close": "Closed" }
+      ],
+      "virtualAvailable": true
+    },
+    {
+      "id": "loc-002",
+      "name": "Riverside Clinic",
+      "address": {
+        "street": "456 Riverfront Avenue",
+        "suite": "Suite 102",
+        "city": "Portland",
+        "state": "OR",
+        "zipCode": "97209",
+        "country": "USA"
+      },
+      "coordinates": {
+        "latitude": 45.5322,
+        "longitude": -122.6721
+      },
+      "phone": "(555) 987-6543",
+      "email": "riverside@mindfulwellnesscenter.com",
+      "accessibility": ["Wheelchair accessible", "Gender-neutral restrooms", "Sensory-friendly waiting area"],
+      "parkingInfo": "Validated parking available in adjacent garage.",
+      "publicTransportInfo": "One block from bus routes 20 and 21.",
+      "hours": [
+        { "day": "Monday", "open": "9:00 AM", "close": "6:00 PM" },
+        { "day": "Tuesday", "open": "9:00 AM", "close": "6:00 PM" },
+        { "day": "Wednesday", "open": "9:00 AM", "close": "6:00 PM" },
+        { "day": "Thursday", "open": "9:00 AM", "close": "6:00 PM" },
+        { "day": "Friday", "open": "9:00 AM", "close": "5:00 PM" },
+        { "day": "Saturday", "open": "Closed", "close": "Closed" },
+        { "day": "Sunday", "open": "Closed", "close": "Closed" }
+      ],
+      "virtualAvailable": true
+    }
+  ],
+  "practitioners": [
+    {
+      "id": "prac-001",
+      "name": {
+        "prefix": "Dr.",
+        "firstName": "Sarah",
+        "lastName": "Johnson",
+        "credentials": "PhD, LCSW"
+      },
+      "role": "Clinical Director",
+      "profileImage": "/images/practitioners/sarah-johnson.jpg",
+      "shortBio": "Dr. Johnson specializes in anxiety disorders and trauma-informed care with over 15 years of experience.",
+      "longBio": "Dr. Sarah Johnson is a licensed clinical psychologist with extensive training in cognitive-behavioral therapy and trauma-informed approaches. She completed her doctorate at Stanford University and her clinical internship at the VA Medical Center. Dr. Johnson takes an integrative approach, combining evidence-based techniques with mindfulness practices to help clients develop resilience and emotional well-being. She is passionate about making mental health care accessible and reducing stigma through community education.",
+      "education": [
+        {
+          "degree": "PhD in Clinical Psychology",
+          "institution": "Stanford University",
+          "year": 2008
+        },
+        {
+          "degree": "Master of Science in Psychology",
+          "institution": "University of Oregon",
+          "year": 2004
+        },
+        {
+          "degree": "Bachelor of Arts in Psychology",
+          "institution": "University of Washington",
+          "year": 2002
+        }
+      ],
+      "licenses": [
+        {
+          "name": "Licensed Clinical Psychologist",
+          "state": "Oregon",
+          "number": "C12345",
+          "expirationDate": "2025-06-30"
+        }
+      ],
+      "specialties": [
+        "Anxiety Disorders",
+        "Post-Traumatic Stress Disorder",
+        "Depression",
+        "Grief and Loss",
+        "Life Transitions"
+      ],
+      "approaches": [
+        "Cognitive Behavioral Therapy (CBT)",
+        "Eye Movement Desensitization and Reprocessing (EMDR)",
+        "Mindfulness-Based Cognitive Therapy",
+        "Trauma-Focused Therapy"
+      ],
+      "languages": ["English", "Spanish"],
+      "acceptingNewClients": true,
+      "ageGroupsFocus": ["Adults", "Older Adults"],
+      "insuranceAccepted": [
+        "Aetna",
+        "Blue Cross Blue Shield",
+        "Cigna",
+        "Medicare",
+        "United Healthcare"
+      ],
+      "sessionTypes": ["Individual", "Group"],
+      "sessionFormat": ["In-person", "Virtual"],
+      "locations": ["loc-001", "loc-002"]
+    },
+    {
+      "id": "prac-002",
+      "name": {
+        "prefix": "",
+        "firstName": "Michael",
+        "lastName": "Chen",
+        "credentials": "LPC, NCC"
+      },
+      "role": "Licensed Professional Counselor",
+      "profileImage": "/images/practitioners/michael-chen.jpg",
+      "shortBio": "Michael specializes in relationship counseling and helping clients navigate cultural identity issues.",
+      "longBio": "Michael Chen is a Licensed Professional Counselor who believes in a client-centered approach that honors each person's unique experiences and cultural background. With over a decade of experience in relationship counseling, Michael helps individuals and couples build healthier communication patterns and deeper connections. His background in multicultural counseling makes him particularly attuned to issues related to cultural identity and intergenerational dynamics. Michael creates a safe, non-judgmental space where clients can explore their challenges and develop practical strategies for growth.",
+      "education": [
+        {
+          "degree": "Master of Arts in Counseling Psychology",
+          "institution": "Lewis & Clark College",
+          "year": 2011
+        },
+        {
+          "degree": "Bachelor of Science in Psychology",
+          "institution": "University of California, Berkeley",
+          "year": 2008
+        }
+      ],
+      "licenses": [
+        {
+          "name": "Licensed Professional Counselor",
+          "state": "Oregon",
+          "number": "C67890",
+          "expirationDate": "2024-11-15"
+        }
+      ],
+      "certifications": [
+        {
+          "name": "National Certified Counselor",
+          "organization": "National Board for Certified Counselors",
+          "expirationDate": "2025-02-28"
+        },
+        {
+          "name": "Gottman Method Couples Therapy - Level 3",
+          "organization": "The Gottman Institute",
+          "expirationDate": null
+        }
+      ],
+      "specialties": [
+        "Couples Therapy",
+        "Relationship Issues",
+        "Cultural Identity",
+        "LGBTQ+ Affirming Therapy",
+        "Family Conflict"
+      ],
+      "approaches": [
+        "Gottman Method",
+        "Emotionally Focused Therapy",
+        "Narrative Therapy",
+        "Solution-Focused Brief Therapy"
+      ],
+      "languages": ["English", "Mandarin Chinese"],
+      "acceptingNewClients": true,
+      "ageGroupsFocus": ["Young Adults", "Adults"],
+      "insuranceAccepted": [
+        "Aetna",
+        "Blue Cross Blue Shield",
+        "Cigna",
+        "Kaiser Permanente",
+        "Providence"
+      ],
+      "sessionTypes": ["Individual", "Couples"],
+      "sessionFormat": ["In-person", "Virtual"],
+      "locations": ["loc-001"]
+    },
+    {
+      "id": "prac-003",
+      "name": {
+        "prefix": "",
+        "firstName": "Jasmine",
+        "lastName": "Williams",
+        "credentials": "LMFT"
+      },
+      "role": "Licensed Marriage and Family Therapist",
+      "profileImage": "/images/practitioners/jasmine-williams.jpg",
+      "shortBio": "Jasmine specializes in family therapy and play therapy for children, with a focus on building resilience.",
+      "longBio": "Jasmine Williams is a Licensed Marriage and Family Therapist who specializes in working with children, adolescents, and families. With a warm and engaging approach, she creates a supportive environment where young clients feel comfortable expressing themselves through play, art, and conversation. Jasmine has extensive experience helping families navigate challenges such as divorce, blended family dynamics, behavioral issues, and developmental transitions. She employs a strength-based perspective, helping clients recognize and build upon their existing resources while developing new skills for emotional regulation and effective communication.",
+      "education": [
+        {
+          "degree": "Master of Science in Marriage and Family Therapy",
+          "institution": "Portland State University",
+          "year": 2015
+        },
+        {
+          "degree": "Bachelor of Arts in Child Development",
+          "institution": "Spelman College",
+          "year": 2012
+        }
+      ],
+      "licenses": [
+        {
+          "name": "Licensed Marriage and Family Therapist",
+          "state": "Oregon",
+          "number": "M54321",
+          "expirationDate": "2025-09-30"
+        }
+      ],
+      "certifications": [
+        {
+          "name": "Registered Play Therapist",
+          "organization": "Association for Play Therapy",
+          "expirationDate": "2024-08-31"
+        }
+      ],
+      "specialties": [
+        "Child and Adolescent Therapy",
+        "Family Systems",
+        "Parenting Support",
+        "Behavioral Issues",
+        "Adjustment Disorders"
+      ],
+      "approaches": [
+        "Play Therapy",
+        "Family Systems Therapy",
+        "Cognitive Behavioral Play Therapy",
+        "Expressive Arts Therapy"
+      ],
+      "languages": ["English"],
+      "acceptingNewClients": true,
+      "ageGroupsFocus": ["Children", "Adolescents", "Families"],
+      "insuranceAccepted": [
+        "Aetna",
+        "Blue Cross Blue Shield",
+        "Cigna",
+        "Oregon Health Plan",
+        "UnitedHealthcare"
+      ],
+      "sessionTypes": ["Individual", "Family", "Group"],
+      "sessionFormat": ["In-person", "Virtual"],
+      "locations": ["loc-001", "loc-002"]
+    }
+  ],
+  "testimonials": [
+    {
+      "id": "test-001",
+      "text": "Dr. Johnson helped me work through my anxiety in ways I never thought possible. I now have tools to manage stressful situations and my quality of life has improved tremendously.",
+      "attribution": "Former client, Anxiety Treatment",
+      "rating": 5
+    },
+    {
+      "id": "test-002",
+      "text": "After years of struggling in our marriage, Michael helped us learn how to truly communicate with each other. We're more connected now than we've been in years.",
+      "attribution": "Couple, Marriage Counseling",
+      "rating": 5
+    },
+    {
+      "id": "test-003",
+      "text": "Our daughter was having a difficult time processing grief after a family loss. Jasmine's play therapy approach gave her a way to express her feelings and start healing.",
+      "attribution": "Parent of 8-year-old client",
+      "rating": 5
+    },
+    {
+      "id": "test-004",
+      "text": "The trauma therapy at Mindful Wellness literally changed my life. I finally feel like I'm moving forward instead of being stuck in the past.",
+      "attribution": "Client, Trauma Therapy",
+      "rating": 5
+    },
+    {
+      "id": "test-005",
+      "text": "The depression group has been so valuable - not just the therapeutic techniques, but realizing I'm not alone in my struggles.",
+      "attribution": "Group Therapy Participant",
+      "rating": 4
+    }
+  ],
+  
+  "faqs": [
+    {
+      "id": "faq-001",
+      "question": "What can I expect in my first therapy session?",
+      "answer": "Your first session is primarily an intake appointment where your therapist will get to know you and your concerns. You'll discuss what brings you to therapy, your background, and your goals. Your therapist will explain their approach and how they might work with your specific situation. It's also an opportunity for you to ask questions and determine if the therapist is a good fit for your needs."
+    },
+    {
+      "id": "faq-002",
+      "question": "How long does therapy typically last?",
+      "answer": "The length of therapy varies widely depending on your specific goals, the nature of your concerns, and the type of therapy. Some focused interventions might last 8-12 sessions, while more complex issues might benefit from longer-term work. Many clients attend weekly sessions for a few months, then taper to less frequent visits as they progress. Your therapist will discuss recommendations for your situation and adjust the plan as needed."
+    },
+    {
+      "id": "faq-003",
+      "question": "Is therapy confidential?",
+      "answer": "Yes, therapy is confidential with a few specific exceptions required by law. These exceptions include situations involving immediate danger to yourself or others, suspected abuse of children or vulnerable adults, and certain legal proceedings. Your therapist will explain confidentiality and its limits during your first session."
+    },
+    {
+      "id": "faq-004",
+      "question": "How do I know if I need therapy?",
+      "answer": "You might consider therapy if you're experiencing persistent distress, feeling overwhelmed, noticing significant changes in mood or behavior, having difficulty with relationships, or struggling to cope with life transitions. Therapy can be beneficial not only for addressing specific mental health concerns but also for personal growth, improved relationships, and enhanced wellbeing."
+    },
+    {
+      "id": "faq-005",
+      "question": "Do you accept insurance?",
+      "answer": "Yes, we accept several major insurance plans, including Aetna, Blue Cross Blue Shield, Cigna, UnitedHealthcare, and more. We recommend contacting your insurance provider to verify your specific coverage for mental health services. Our administrative team is also available to help answer insurance questions."
+    },
+    {
+      "id": "faq-006",
+      "question": "What's the difference between a psychiatrist, psychologist, and therapist?",
+      "answer": "Psychiatrists are medical doctors who can prescribe medication and sometimes provide therapy. Psychologists typically have doctoral degrees (PhD, PsyD) and provide therapy and psychological testing but cannot prescribe medication in most states. Therapists may include licensed counselors, social workers, and marriage and family therapists, all of whom provide various forms of talk therapy but cannot prescribe medication. All these professionals work together in the mental health field, often referring to each other as needed."
+    },
+    {
+      "id": "faq-007",
+      "question": "Do you offer virtual therapy sessions?",
+      "answer": "Yes, we offer secure, HIPAA-compliant video sessions for most of our services. Virtual therapy (also called telehealth) makes therapy accessible regardless of location, transportation limitations, or other barriers to in-person care. We use a secure platform designed specifically for healthcare, and your therapist will help you get set up prior to your first virtual appointment."
+    }
+  ],
+  
+  "insuranceAndPayment": {
+    "acceptedInsurancePlans": [
+      {
+        "provider": "Aetna",
+        "plans": ["Standard", "Premium", "Medicare Advantage"]
+      },
+      {
+        "provider": "Blue Cross Blue Shield",
+        "plans": ["PPO", "HMO", "Federal Employee Program"]
+      },
+      {
+        "provider": "Cigna",
+        "plans": ["Open Access Plus", "Performance", "Behavioral Health"]
+      },
+      {
+        "provider": "UnitedHealthcare",
+        "plans": ["Choice", "Options PPO", "Medicare Advantage"]
+      },
+      {
+        "provider": "Medicare",
+        "plans": ["Part B", "Supplement Plans"]
+      },
+      {
+        "provider": "Oregon Health Plan (Medicaid)",
+        "plans": ["All Plans"]
+      }
+    ],
+    "selfPayOptions": {
+      "individualTherapy": {
+        "initialSession": 175,
+        "standardSession": 150,
+        "extendedSession": 200
+      },
+      "couplesTherapy": {
+        "initialSession": 200,
+        "standardSession": 175,
+        "extendedSession": 250
+      },
+      "groupTherapy": {
+        "perSession": 60
+      },
+      "psychologicalAssessment": {
+        "perHour": 200
+      }
+    },
+    "slidingScaleAvailable": true,
+    "slidingScaleDetails": "We offer a limited number of sliding scale slots based on financial need. Please inquire with our intake coordinator about current availability.",
+    "paymentMethods": ["Credit/Debit Card", "HSA/FSA Cards", "Check", "Cash"],
+    "paymentPolicies": "Payment is due at the time of service. We require 24 hours notice for cancellations to avoid a late cancellation fee."
+  },
+  
+  "accreditations": [
+    {
+      "organization": "American Psychological Association",
+      "type": "Professional Membership",
+      "validUntil": null
+    },
+    {
+      "organization": "National Association of Social Workers",
+      "type": "Professional Membership",
+      "validUntil": null
+    },
+    {
+      "organization": "American Association for Marriage and Family Therapy",
+      "type": "Professional Membership",
+      "validUntil": null
+    },
+    {
+      "organization": "HIPAA Compliance Certification",
+      "type": "Practice Standards",
+      "validUntil": "2025-12-31"
+    },
+    {
+      "organization": "Oregon Board of Psychology",
+      "type": "State Licensing Board",
+      "validUntil": null
+    }
+  ],
+  
+  "services": [
+    {
+      "id": "serv-001",
+      "name": "Individual Therapy",
+      "description": "One-on-one therapy sessions tailored to address your specific mental health needs and goals. Our therapists use evidence-based approaches to help you develop insights, coping strategies, and paths to personal growth.",
+      "image": "/images/services/individual-therapy.jpg",
+      "duration": "50 minutes",
+      "availableVirtually": true,
+      "forAgeGroups": ["Adolescents", "Young Adults", "Adults", "Older Adults"]
+    },
+    {
+      "id": "serv-002",
+      "name": "Couples Therapy",
+      "description": "Therapy for partners seeking to improve their relationship, enhance communication, resolve conflicts, or navigate transitions. Our approach helps couples build stronger connections while honoring individual needs.",
+      "image": "/images/services/couples-therapy.jpg",
+      "duration": "80 minutes",
+      "availableVirtually": true,
+      "forAgeGroups": ["Young Adults", "Adults", "Older Adults"]
+    },
+    {
+      "id": "serv-003",
+      "name": "Family Therapy",
+      "description": "Therapy that brings family members together to work through challenges, improve communication patterns, and strengthen relationships. We create a supportive environment where all voices can be heard.",
+      "image": "/images/services/family-therapy.jpg",
+      "duration": "80 minutes",
+      "availableVirtually": true,
+      "forAgeGroups": ["Children", "Adolescents", "Young Adults", "Adults", "Older Adults"]
+    },
+    {
+      "id": "serv-004",
+      "name": "Child & Play Therapy",
+      "description": "Specialized therapy for children using play, art, and other developmentally appropriate techniques to help young people express feelings, process experiences, and develop healthy coping skills.",
+      "image": "/images/services/play-therapy.jpg",
+      "duration": "45 minutes",
+      "availableVirtually": true,
+      "forAgeGroups": ["Children", "Adolescents"]
+    },
+    {
+      "id": "serv-005",
+      "name": "Anxiety Treatment",
+      "description": "Specialized therapy for anxiety disorders using evidence-based approaches like Cognitive Behavioral Therapy and mindfulness techniques to reduce symptoms and build resilience.",
+      "image": "/images/services/anxiety-treatment.jpg",
+      "duration": "50 minutes",
+      "availableVirtually": true,
+      "forAgeGroups": ["Adolescents", "Young Adults", "Adults", "Older Adults"]
+    },
+    {
+      "id": "serv-006",
+      "name": "Depression Treatment",
+      "description": "Comprehensive treatment for depression using a combination of therapeutic approaches to address symptoms, identify contributing factors, and develop strategies for recovery and emotional wellness.",
+      "image": "/images/services/depression-treatment.jpg",
+      "duration": "50 minutes",
+      "availableVirtually": true,
+      "forAgeGroups": ["Adolescents", "Young Adults", "Adults", "Older Adults"]
+    },
+    {
+      "id": "serv-007",
+      "name": "Trauma Therapy",
+      "description": "Specialized therapy for individuals who have experienced trauma, using approaches such as EMDR, trauma-focused CBT, and somatic techniques to process experiences and reduce their impact on daily life.",
+      "image": "/images/services/trauma-therapy.jpg",
+      "duration": "50 minutes",
+      "availableVirtually": true,
+      "forAgeGroups": ["Adolescents", "Young Adults", "Adults", "Older Adults"]
+    },
+    {
+      "id": "serv-008",
+      "name": "Group Therapy",
+      "description": "Therapeutic groups focused on specific topics or shared experiences, offering support, insight, and connection with others facing similar challenges. Our groups are facilitated by experienced therapists in a safe, confidential environment.",
+      "image": "/images/services/group-therapy.jpg",
+      "duration": "90 minutes",
+      "availableVirtually": true,
+      "forAgeGroups": ["Young Adults", "Adults", "Older Adults"]
+    },
+    {
+      "id": "serv-009",
+      "name": "Psychological Assessment",
+      "description": "Comprehensive psychological evaluations to assess cognitive functioning, personality, emotional well-being, or specific conditions such as ADHD, learning disorders, or autism spectrum disorders.",
+      "image": "/images/services/psychological-assessment.jpg",
+      "duration": "Varies (typically 2-4 hours over multiple sessions)",
+      "availableVirtually": false,
+      "forAgeGroups": ["Children", "Adolescents", "Young Adults", "Adults", "Older Adults"]
+    }
+
+================
+File: src/pages/account/AccountPage.tsx
+================
+import React, { useState } from 'react';
+import {
+  Box,
+  Typography,
+  Container,
+  Grid,
+  Paper,
+  List,
+  ListItem,
+  ListItemButton,
+  ListItemText,
+  Button,
+  Table,
+  TableBody,
+  TableCell,
+  TableContainer,
+  TableHead,
+  TableRow,
+  Chip,
+  Divider,
+  styled,
+  useTheme
+} from '@mui/material';
+import CalendarMonthIcon from '@mui/icons-material/CalendarMonth';
+import HistoryIcon from '@mui/icons-material/History';
+import EventAvailableIcon from '@mui/icons-material/EventAvailable';
+import InsertDriveFileIcon from '@mui/icons-material/InsertDriveFile';
+import ContactsIcon from '@mui/icons-material/Contacts';
+import CreditCardIcon from '@mui/icons-material/CreditCard';
+import AttachMoneyIcon from '@mui/icons-material/AttachMoney';
+import ReceiptIcon from '@mui/icons-material/Receipt';
+import NotificationsIcon from '@mui/icons-material/Notifications';
+import LockIcon from '@mui/icons-material/Lock';
+import FamilyRestroomIcon from '@mui/icons-material/FamilyRestroom';
+import ShareIcon from '@mui/icons-material/Share';
+import AccessTimeIcon from '@mui/icons-material/AccessTime';
+import EditCalendarIcon from '@mui/icons-material/EditCalendar';
+import CancelIcon from '@mui/icons-material/Cancel';
+import ReplayIcon from '@mui/icons-material/Replay';
+import AddIcon from '@mui/icons-material/Add';
+
+// Types
+interface Appointment {
+  id: string;
+  date: string;
+  time: string;
+  service: string;
+  practitioner: string;
+}
+
+interface AppointmentHistoryItem extends Omit<Appointment, 'time'> {
+  status: 'Completed' | 'Cancelled' | 'Rescheduled';
+}
+
+interface WaitListRequest {
+  id: string;
+  service: string;
+  client: string;
+  availability: string;
+}
+
+interface UserData {
+  prefix?: string;
+  firstName: string;
+  lastName: string;
+  appointments: Appointment[];
+  appointmentHistory: AppointmentHistoryItem[];
+  waitListRequests: WaitListRequest[];
+}
+
+interface AccountPageProps {
+  userData: UserData;
+}
+
+// Styled components
+const RoundedPaper = styled(Paper)(({ theme }) => ({
+  borderRadius: 16,
+  overflow: 'hidden',
+  boxShadow: '0px 4px 12px rgba(0, 0, 0, 0.05)',
+  height: '100%',
+  transition: 'all 0.3s ease',
+}));
+
+const HeaderPaper = styled(Paper)(({ theme }) => ({
+  borderRadius: '16px 16px 0 0',
+  padding: theme.spacing(4),
+  backgroundColor: theme.palette.primary.main,
+  color: theme.palette.primary.contrastText,
+}));
+
+const StyledTableContainer = styled(TableContainer)(({ theme }) => ({
+  borderRadius: 12,
+  marginBottom: theme.spacing(3),
+  boxShadow: 'none',
+  border: `1px solid ${theme.palette.divider}`,
+}));
+
+const ActionButton = styled(Button)(({ theme }) => ({
+  borderRadius: 20,
+  padding: theme.spacing(0.5, 2),
+  textTransform: 'none',
+  fontWeight: 500,
+}));
+
+const ListButtonStyled = styled(ListItemButton)(({ theme }) => ({
+  borderRadius: 8,
+  margin: theme.spacing(0.5, 1),
+  transition: 'all 0.2s ease',
+}));
+
+const StatusChip = styled(Chip)(({ theme }) => ({
+  borderRadius: 12,
+  fontWeight: 500,
+}));
+
+const AccountPage: React.FC<AccountPageProps> = ({ userData }) => {
+  const theme = useTheme();
+  const [activeSection, setActiveSection] = useState<string>('appointments');
+  
+  const accountSections = [
+    { id: 'appointments', name: 'Upcoming Appointments', icon: <CalendarMonthIcon /> },
+    { id: 'history', name: 'Appointment History', icon: <HistoryIcon /> },
+    { id: 'waitlist', name: 'Wait List Requests', icon: <EventAvailableIcon /> },
+    { id: 'forms', name: 'Intake Forms', icon: <InsertDriveFileIcon /> },
+    { id: 'documents', name: 'Documents', icon: <InsertDriveFileIcon /> },
+    { id: 'contact', name: 'Contact Info', icon: <ContactsIcon /> },
+    { id: 'payment', name: 'Credit Cards on File', icon: <CreditCardIcon /> },
+    { id: 'balance', name: 'Pay Balance', icon: <AttachMoneyIcon /> },
+    { id: 'receipts', name: 'Receipts', icon: <ReceiptIcon /> },
+    { id: 'notifications', name: 'Notifications & Reminders', icon: <NotificationsIcon /> },
+    { id: 'password', name: 'Username / Password', icon: <LockIcon /> },
+    { id: 'family', name: 'Family Members', icon: <FamilyRestroomIcon /> },
+    { id: 'social', name: 'Google, Facebook & Twitter', icon: <ShareIcon /> },
+    { id: 'timezone', name: 'Time Zone', icon: <AccessTimeIcon /> },
+  ];
+
+  const renderContent = () => {
+    switch (activeSection) {
+      case 'appointments':
+        return <UpcomingAppointments appointments={userData.appointments} />;
+      case 'history':
+        return <AppointmentHistory history={userData.appointmentHistory} />;
+      case 'waitlist':
+        return <WaitList requests={userData.waitListRequests} />;
+      default:
+        return (
+          <Box 
+            sx={{ 
+              py: 8, 
+              textAlign: 'center',
+              bgcolor: theme.palette.background.default,
+              borderRadius: 4
+            }}
+          >
+            <Typography variant="body1" color="text.secondary">
+              This section is under development.
+            </Typography>
+          </Box>
+        );
+    }
+  };
+
+  return (
+    <Container maxWidth="xl" sx={{ py: 4 }}>
+      <HeaderPaper elevation={0}>
+        <Typography variant="h4" gutterBottom fontWeight={600}>
+          {userData ? `${userData.prefix || ''} ${userData.firstName} ${userData.lastName}` : 'My Account'}
+        </Typography>
+        <Typography variant="subtitle1">
+          Manage your appointments and account information
+        </Typography>
+      </HeaderPaper>
+
+      <Grid container spacing={3} sx={{ mt: 0 }}>
+        {/* Account Navigation Sidebar */}
+        <Grid item xs={12} md={4} lg={3}>
+          <RoundedPaper elevation={1}>
+            <Box sx={{ 
+              p: 2, 
+              bgcolor: theme.palette.primary.light, 
+              color: theme.palette.primary.contrastText 
+            }}>
+              <Typography variant="h6" fontWeight={600}>
+                My Account
+              </Typography>
+            </Box>
+            <List component="nav" aria-label="account sections" sx={{ p: 1 }}>
+              {accountSections.map(section => (
+                <ListItem key={section.id} disablePadding>
+                  <ListButtonStyled
+                    selected={activeSection === section.id}
+                    onClick={() => setActiveSection(section.id)}
+                    sx={{
+                      bgcolor: activeSection === section.id 
+                        ? `${theme.palette.primary.main}15` 
+                        : 'transparent',
+                      '&.Mui-selected': {
+                        bgcolor: `${theme.palette.primary.main}15`,
+                        '&:hover': {
+                          bgcolor: `${theme.palette.primary.main}25`,
+                        }
+                      }
+                    }}
+                  >
+                    <Box component="span" sx={{ mr: 2, color: theme.palette.primary.main }}>
+                      {section.icon}
+                    </Box>
+                    <ListItemText 
+                      primary={section.name} 
+                      primaryTypographyProps={{ 
+                        fontWeight: activeSection === section.id ? 600 : 400 
+                      }}
+                    />
+                  </ListButtonStyled>
+                </ListItem>
+              ))}
+            </List>
+            <Divider />
+            <Box sx={{ p: 2 }}>
+              <Button 
+                fullWidth 
+                variant="contained" 
+                color="primary"
+                startIcon={<CalendarMonthIcon />}
+                sx={{ 
+                  borderRadius: 25,
+                  py: 1,
+                  fontWeight: 500,
+                  boxShadow: '0px 4px 8px rgba(0,0,0,0.1)',
+                  '&:hover': {
+                    boxShadow: '0px 6px 12px rgba(0,0,0,0.15)',
+                  }
+                }}
+              >
+                Book an Appointment
+              </Button>
+            </Box>
+          </RoundedPaper>
+        </Grid>
+
+        {/* Main Content Area */}
+        <Grid item xs={12} md={8} lg={9}>
+          <RoundedPaper elevation={1} sx={{ p: 3 }}>
+            <Typography 
+              variant="h5" 
+              component="h2" 
+              gutterBottom 
+              sx={{ mb: 4, fontWeight: 600 }}
+            >
+              {accountSections.find(s => s.id === activeSection)?.name}
+            </Typography>
+            
+            {renderContent()}
+          </RoundedPaper>
+        </Grid>
+      </Grid>
+    </Container>
+  );
+};
+
+// Component for Upcoming Appointments section
+const UpcomingAppointments: React.FC<{ appointments: Appointment[] }> = ({ appointments }) => {
+  const theme = useTheme();
+  
+  return (
+    <Box>
+      {appointments && appointments.length > 0 ? (
+        <StyledTableContainer>
+          <Table aria-label="upcoming appointments table">
+            <TableHead sx={{ bgcolor: theme.palette.background.default }}>
+              <TableRow>
+                <TableCell sx={{ fontWeight: 600 }}>Date</TableCell>
+                <TableCell sx={{ fontWeight: 600 }}>Time</TableCell>
+                <TableCell sx={{ fontWeight: 600 }}>Service</TableCell>
+                <TableCell sx={{ fontWeight: 600 }}>Practitioner</TableCell>
+                <TableCell sx={{ fontWeight: 600 }}>Actions</TableCell>
+              </TableRow>
+            </TableHead>
+            <TableBody>
+              {appointments.map((appointment) => (
+                <TableRow key={appointment.id}>
+                  <TableCell>{appointment.date}</TableCell>
+                  <TableCell>{appointment.time}</TableCell>
+                  <TableCell>{appointment.service}</TableCell>
+                  <TableCell>{appointment.practitioner}</TableCell>
+                  <TableCell>
+                    <ActionButton
+                      startIcon={<EditCalendarIcon />}
+                      variant="text"
+                      color="primary"
+                      size="small"
+                      sx={{ mr: 1 }}
+                    >
+                      Reschedule
+                    </ActionButton>
+                    <ActionButton
+                      startIcon={<CancelIcon />}
+                      variant="text"
+                      color="error"
+                      size="small"
+                    >
+                      Cancel
+                    </ActionButton>
+                  </TableCell>
+                </TableRow>
+              ))}
+            </TableBody>
+          </Table>
+        </StyledTableContainer>
+      ) : (
+        <Box 
+          sx={{ 
+            py: 6, 
+            textAlign: 'center',
+            bgcolor: theme.palette.background.default,
+            borderRadius: 4,
+            mb: 3
+          }}
+        >
+          <Typography variant="body1" paragraph color="text.secondary">
+            You don't have any upcoming appointments.
+          </Typography>
+          <Button
+            variant="contained"
+            color="primary"
+            startIcon={<CalendarMonthIcon />}
+            sx={{ 
+              borderRadius: 25,
+              py: 1,
+              px: 3,
+              fontWeight: 500
+            }}
+          >
+            Book an Appointment
+          </Button>
+        </Box>
+      )}
+
+      {appointments && appointments.length > 0 && (
+        <Box sx={{ display: 'flex', justifyContent: 'flex-end' }}>
+          <Button
+            variant="outlined"
+            color="primary"
+            startIcon={<CalendarMonthIcon />}
+            sx={{ 
+              borderRadius: 25,
+              py: 1,
+              px: 3
+            }}
+          >
+            Subscribe to your calendar
+          </Button>
+        </Box>
+      )}
+    </Box>
+  );
+};
+
+// Component for Appointment History section
+const AppointmentHistory: React.FC<{ history: AppointmentHistoryItem[] }> = ({ history }) => {
+  const theme = useTheme();
+  
+  const getStatusColor = (status: string) => {
+    switch (status) {
+      case 'Completed':
+        return {
+          bg: theme.palette.success.light,
+          color: theme.palette.success.dark
+        };
+      case 'Cancelled':
+        return {
+          bg: theme.palette.error.light,
+          color: theme.palette.error.dark
+        };
+      case 'Rescheduled':
+        return {
+          bg: theme.palette.info.light,
+          color: theme.palette.info.dark
+        };
+      default:
+        return {
+          bg: theme.palette.grey[200],
+          color: theme.palette.grey[800]
+        };
+    }
+  };
+
+  return (
+    <Box>
+      {history && history.length > 0 ? (
+        <StyledTableContainer>
+          <Table aria-label="appointment history table">
+            <TableHead sx={{ bgcolor: theme.palette.background.default }}>
+              <TableRow>
+                <TableCell sx={{ fontWeight: 600 }}>Date</TableCell>
+                <TableCell sx={{ fontWeight: 600 }}>Service</TableCell>
+                <TableCell sx={{ fontWeight: 600 }}>Practitioner</TableCell>
+                <TableCell sx={{ fontWeight: 600 }}>Status</TableCell>
+                <TableCell sx={{ fontWeight: 600 }}>Actions</TableCell>
+              </TableRow>
+            </TableHead>
+            <TableBody>
+              {history.map((appointment) => {
+                const statusColors = getStatusColor(appointment.status);
+                return (
+                  <TableRow key={appointment.id}>
+                    <TableCell>{appointment.date}</TableCell>
+                    <TableCell>{appointment.service}</TableCell>
+                    <TableCell>{appointment.practitioner}</TableCell>
+                    <TableCell>
+                      <StatusChip
+                        label={appointment.status}
+                        size="small"
+                        sx={{ 
+                          bgcolor: statusColors.bg,
+                          color: statusColors.color
+                        }}
+                      />
+                    </TableCell>
+                    <TableCell>
+                      <ActionButton
+                        startIcon={<ReplayIcon />}
+                        variant="text"
+                        color="primary"
+                        size="small"
+                      >
+                        Book Again
+                      </ActionButton>
+                    </TableCell>
+                  </TableRow>
+                );
+              })}
+            </TableBody>
+          </Table>
+        </StyledTableContainer>
+      ) : (
+        <Box 
+          sx={{ 
+            py: 6, 
+            textAlign: 'center',
+            bgcolor: theme.palette.background.default,
+            borderRadius: 4
+          }}
+        >
+          <Typography variant="body1" color="text.secondary">
+            You don't have any appointment history.
+          </Typography>
+        </Box>
+      )}
+    </Box>
+  );
+};
+
+// Component for Wait List section
+const WaitList: React.FC<{ requests: WaitListRequest[] }> = ({ requests }) => {
+  const theme = useTheme();
+  
+  return (
+    <Box>
+      <Box sx={{ mb: 3 }}>
+        <Typography variant="body2" color="text.secondary" paragraph>
+          You will receive wait list notifications via Email.
+          <Button 
+            color="primary" 
+            sx={{ ml: 1, borderRadius: 20, textTransform: 'none' }}
+          >
+            Update your notification preferences
+          </Button>
+        </Typography>
+      </Box>
+
+      {requests && requests.length > 0 ? (
+        <StyledTableContainer>
+          <Table aria-label="wait list requests table">
+            <TableHead sx={{ bgcolor: theme.palette.background.default }}>
+              <TableRow>
+                <TableCell sx={{ fontWeight: 600 }}>Service</TableCell>
+                <TableCell sx={{ fontWeight: 600 }}>Client</TableCell>
+                <TableCell sx={{ fontWeight: 600 }}>Availability</TableCell>
+                <TableCell sx={{ fontWeight: 600 }}>Actions</TableCell>
+              </TableRow>
+            </TableHead>
+            <TableBody>
+              {requests.map((request) => (
+                <TableRow key={request.id}>
+                  <TableCell>{request.service}</TableCell>
+                  <TableCell>{request.client}</TableCell>
+                  <TableCell>{request.availability}</TableCell>
+                  <TableCell>
+                    <ActionButton
+                      startIcon={<CancelIcon />}
+                      variant="text"
+                      color="error"
+                      size="small"
+                    >
+                      Remove
+                    </ActionButton>
+                  </TableCell>
+                </TableRow>
+              ))}
+            </TableBody>
+          </Table>
+        </StyledTableContainer>
+      ) : (
+        <Box 
+          sx={{ 
+            py: 6, 
+            textAlign: 'center',
+            bgcolor: theme.palette.background.default,
+            borderRadius: 4,
+            mb: 3
+          }}
+        >
+          <Typography variant="body1" paragraph color="text.secondary">
+            You don't have any wait list requests.
+          </Typography>
+        </Box>
+      )}
+
+      <Box sx={{ display: 'flex', justifyContent: 'flex-end' }}>
+        <Button
+          variant="contained"
+          color="primary"
+          startIcon={<AddIcon />}
+          sx={{ 
+            borderRadius: 25,
+            py: 1,
+            px: 3,
+            fontWeight: 500,
+            boxShadow: '0px 4px 8px rgba(0,0,0,0.1)',
+            '&:hover': {
+              boxShadow: '0px 6px 12px rgba(0,0,0,0.15)',
+            }
+          }}
+        >
+          Add a Wait List Request
+        </Button>
+      </Box>
+    </Box>
+  );
+};
+
+export default AccountPage;
+
+================
+File: src/pages/bookings/BookingsPage.tsx
+================
+import React, { useState } from 'react';
+import {
+  Box,
+  Typography,
+  Container,
+  Grid,
+  Paper,
+  List,
+  ListItem,
+  ListItemButton,
+  ListItemText,
+  Button,
+  Card,
+  CardMedia,
+  CardContent,
+  Divider,
+  styled,
+  useMediaQuery,
+  useTheme
+} from '@mui/material';
+import CalendarMonthIcon from '@mui/icons-material/CalendarMonth';
+import EventNoteIcon from '@mui/icons-material/EventNote';
+import PersonIcon from '@mui/icons-material/Person';
+
+// Define types
+interface PractitionerName {
+  prefix?: string;
+  firstName: string;
+  lastName: string;
+  credentials?: string;
+}
+
+interface Practitioner {
+  id: string;
+  name: PractitionerName;
+  role: string;
+  profileImage: string;
+}
+
+interface BookingsPageProps {
+  practitioners: Practitioner[];
+}
+
+// Styled components
+const RoundedPaper = styled(Paper)(({ theme }) => ({
+  borderRadius: 16,
+  overflow: 'hidden',
+  boxShadow: '0px 4px 12px rgba(0, 0, 0, 0.05)',
+  height: '100%',
+  transition: 'all 0.3s ease',
+}));
+
+const HeaderPaper = styled(Paper)(({ theme }) => ({
+  borderRadius: '16px 16px 0 0',
+  padding: theme.spacing(4),
+  backgroundColor: theme.palette.primary.main,
+  color: theme.palette.primary.contrastText,
+}));
+
+const PractitionerCard = styled(Card)(({ theme }) => ({
+  borderRadius: 16,
+  overflow: 'hidden',
+  boxShadow: '0px 4px 12px rgba(0, 0, 0, 0.05)',
+  transition: 'transform 0.3s ease, box-shadow 0.3s ease',
+  height: '100%',
+  '&:hover': {
+    transform: 'translateY(-4px)',
+    boxShadow: '0px 8px 20px rgba(0, 0, 0, 0.1)',
+  },
+}));
+
+const ListButtonStyled = styled(ListItemButton)(({ theme }) => ({
+  borderRadius: 8,
+  margin: theme.spacing(0.5, 1),
+  transition: 'all 0.2s ease',
+}));
+
+const BookingsPage: React.FC<BookingsPageProps> = ({ practitioners }) => {
+  const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down('md'));
+  const [selectedService, setSelectedService] = useState<string | null>(null);
+
+  // List of available services
+  const services = [
+    { id: 'ind-adult', name: 'Individual Adult Counselling' },
+    { id: 'couples', name: 'Couples Counselling' },
+    { id: 'adolescent-16-17', name: 'Adolescent Counselling - Age 16 to 17' },
+    { id: 'adolescent-12-15', name: 'Adolescent Counselling - Age 12 to 15' },
+    { id: 'child', name: 'Child Therapy (11 and under)' },
+    { id: 'consultation', name: 'Free Consultation Call' },
+    { id: 'assessment', name: 'Adult Assessment' },
+    { id: 'emdr-adult', name: 'EMDR Adult' },
+    { id: 'emdr-child', name: 'EMDR Child and Adolescent' },
+    { id: 'family', name: 'Family Therapy' },
+  ];
+
+  // Function to get a formatted name
+  const getFormattedName = (name: PractitionerName) => {
+    let formattedName = '';
+    if (name.prefix) formattedName += `${name.prefix} `;
+    formattedName += `${name.firstName} ${name.lastName}`;
+    if (name.credentials) formattedName += `, ${name.credentials}`;
+    return formattedName;
+  };
+
+  return (
+    <Container maxWidth="xl" sx={{ py: 4 }}>
+      <HeaderPaper elevation={0}>
+        <Typography variant="h4" gutterBottom fontWeight={600}>
+          Book an Appointment
+        </Typography>
+        <Typography variant="subtitle1">
+          Select a service and practitioner to schedule your session
+        </Typography>
+      </HeaderPaper>
+
+      <Grid container spacing={3} sx={{ mt: 0 }}>
+        {/* Service Selection Sidebar */}
+        <Grid item xs={12} md={4} lg={3}>
+          <RoundedPaper elevation={1}>
+            <Box sx={{ 
+              p: 2, 
+              bgcolor: theme.palette.primary.light, 
+              color: theme.palette.primary.contrastText 
+            }}>
+              <Typography variant="h6" fontWeight={600}>
+                Our Services
+              </Typography>
+            </Box>
+            <List component="nav" aria-label="service options" sx={{ p: 1 }}>
+              {services.map(service => (
+                <ListItem key={service.id} disablePadding>
+                  <ListButtonStyled
+                    selected={selectedService === service.id}
+                    onClick={() => setSelectedService(service.id)}
+                    sx={{
+                      bgcolor: selectedService === service.id 
+                        ? `${theme.palette.primary.main}15` 
+                        : 'transparent',
+                      '&.Mui-selected': {
+                        bgcolor: `${theme.palette.primary.main}15`,
+                        '&:hover': {
+                          bgcolor: `${theme.palette.primary.main}25`,
+                        }
+                      }
+                    }}
+                  >
+                    <ListItemText 
+                      primary={service.name} 
+                      primaryTypographyProps={{ 
+                        fontWeight: selectedService === service.id ? 600 : 400 
+                      }}
+                    />
+                  </ListButtonStyled>
+                </ListItem>
+              ))}
+            </List>
+            <Divider />
+            <Box sx={{ p: 2 }}>
+              <Button 
+                fullWidth 
+                variant="outlined" 
+                startIcon={<CalendarMonthIcon />}
+                sx={{ 
+                  borderRadius: 25,
+                  py: 1,
+                  fontWeight: 500
+                }}
+              >
+                View Availability by Month
+              </Button>
+            </Box>
+          </RoundedPaper>
+        </Grid>
+
+        {/* Main Content Area */}
+        <Grid item xs={12} md={8} lg={9}>
+          <RoundedPaper elevation={1} sx={{ p: 3 }}>
+            <Typography 
+              variant="h5" 
+              component="h2" 
+              gutterBottom 
+              sx={{ mb: 4, fontWeight: 600 }}
+            >
+              {selectedService 
+                ? services.find(s => s.id === selectedService)?.name 
+                : 'Welcome to our online booking site'}
+            </Typography>
+            
+            {selectedService ? (
+              <>
+                <Box 
+                  sx={{ 
+                    display: 'flex', 
+                    alignItems: 'center', 
+                    mb: 3,
+                    pb: 2,
+                    borderBottom: `1px solid ${theme.palette.divider}`
+                  }}
+                >
+                  <PersonIcon 
+                    sx={{ 
+                      color: theme.palette.primary.main, 
+                      mr: 1, 
+                      fontSize: 28 
+                    }} 
+                  />
+                  <Typography variant="h6" color="primary" fontWeight={500}>
+                    Choose Your Practitioner
+                  </Typography>
+                </Box>
+                
+                <Grid container spacing={3}>
+                  {practitioners?.map(practitioner => (
+                    <Grid item xs={12} sm={6} md={6} lg={4} key={practitioner.id}>
+                      <PractitionerCard>
+                        <CardMedia
+                          component="img"
+                          height="200"
+                          image={practitioner.profileImage || "https://via.placeholder.com/300x200"}
+                          alt={`${practitioner.name.firstName} ${practitioner.name.lastName}`}
+                          sx={{ objectFit: 'cover' }}
+                        />
+                        <CardContent>
+                          <Typography 
+                            variant="h6" 
+                            component="div" 
+                            gutterBottom
+                            fontWeight={600}
+                          >
+                            {getFormattedName(practitioner.name)}
+                          </Typography>
+                          <Typography 
+                            variant="body2" 
+                            color="text.secondary"
+                            sx={{ mb: 2 }}
+                          >
+                            {practitioner.role}
+                          </Typography>
+                          <Button
+                            variant="contained"
+                            color="primary"
+                            fullWidth
+                            startIcon={<EventNoteIcon />}
+                            sx={{ 
+                              borderRadius: 25,
+                              py: 1,
+                              fontWeight: 500,
+                              boxShadow: '0px 4px 8px rgba(0,0,0,0.1)',
+                              '&:hover': {
+                                boxShadow: '0px 6px 12px rgba(0,0,0,0.15)',
+                              }
+                            }}
+                          >
+                            Check Availability
+                          </Button>
+                        </CardContent>
+                      </PractitionerCard>
+                    </Grid>
+                  ))}
+                </Grid>
+              </>
+            ) : (
+              <Box 
+                sx={{ 
+                  py: 8, 
+                  textAlign: 'center',
+                  bgcolor: theme.palette.background.default,
+                  borderRadius: 4
+                }}
+              >
+                <Typography variant="body1" paragraph color="text.secondary">
+                  Please select a service from the menu to continue with booking.
+                </Typography>
+                <Typography variant="body2" color="text.secondary">
+                  Our practitioners offer a variety of specialized services to meet your needs.
+                </Typography>
+              </Box>
+            )}
+          </RoundedPaper>
+        </Grid>
+      </Grid>
+    </Container>
+  );
+};
+
+export default BookingsPage;
+
+================
+File: src/pages/exercises/ExercisesPage.tsx
+================
+import React, { useState } from 'react';
+import {
+  Box,
+  Typography,
+  Container,
+  Grid,
+  Paper,
+  Card,
+  CardMedia,
+  CardContent,
+  CardActions,
+  Button,
+  TextField,
+  FormControl,
+  InputLabel,
+  Select,
+  MenuItem,
+  Chip,
+  IconButton,
+  styled,
+  useTheme,
+  SelectChangeEvent
+} from '@mui/material';
+import SearchIcon from '@mui/icons-material/Search';
+import AccessTimeIcon from '@mui/icons-material/AccessTime';
+import PlayArrowIcon from '@mui/icons-material/PlayArrow';
+import FilterListIcon from '@mui/icons-material/FilterList';
+import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
+import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
+import RefreshIcon from '@mui/icons-material/Refresh';
+
+// Define types
+interface Exercise {
+  id: string;
+  title: string;
+  category: string;
+  description: string;
+  duration: number;
+  image: string;
+  link: string;
+}
+
+interface ExercisesPageProps {
+  exercises: Exercise[];
+}
+
+// Styled components
+const RoundedPaper = styled(Paper)(({ theme }) => ({
+  borderRadius: 16,
+  overflow: 'hidden',
+  boxShadow: '0px 4px 12px rgba(0, 0, 0, 0.05)',
+  transition: 'all 0.3s ease',
+}));
+
+const HeaderPaper = styled(Paper)(({ theme }) => ({
+  borderRadius: '16px 16px 0 0',
+  padding: theme.spacing(4),
+  backgroundColor: theme.palette.primary.main,
+  color: theme.palette.primary.contrastText,
+}));
+
+const ExerciseCard = styled(Card)(({ theme }) => ({
+  borderRadius: 16,
+  overflow: 'hidden',
+  height: '100%',
+  display: 'flex',
+  flexDirection: 'column',
+  boxShadow: '0px 4px 12px rgba(0, 0, 0, 0.05)',
+  transition: 'transform 0.3s ease, box-shadow 0.3s ease',
+  '&:hover': {
+    transform: 'translateY(-8px)',
+    boxShadow: '0px 12px 24px rgba(0, 0, 0, 0.12)',
+  },
+}));
+
+const CategoryChip = styled(Chip)(({ theme }) => ({
+  borderRadius: 16,
+  fontWeight: 500,
+  padding: theme.spacing(0.5, 0),
+  backgroundColor: theme.palette.secondary.light,
+  color: theme.palette.secondary.dark,
+}));
+
+const SearchTextField = styled(TextField)(({ theme }) => ({
+  '& .MuiOutlinedInput-root': {
+    borderRadius: 25,
+    '& fieldset': {
+      borderWidth: 1,
+    },
+  },
+}));
+
+const RoundedSelect = styled(Select)(({ theme }) => ({
+  '& .MuiOutlinedInput-notchedOutline': {
+    borderRadius: 25,
+  },
+}));
+
+const StartButton = styled(Button)(({ theme }) => ({
+  borderRadius: 25,
+  fontWeight: 600,
+  padding: theme.spacing(1, 3),
+  boxShadow: '0px 4px 8px rgba(0,0,0,0.1)',
+  transition: 'all 0.3s ease',
+  '&:hover': {
+    boxShadow: '0px 8px 16px rgba(0,0,0,0.15)',
+    transform: 'translateY(-2px)',
+  },
+}));
+
+const ExercisesPage: React.FC<ExercisesPageProps> = ({ exercises }) => {
+  const theme = useTheme();
+  const [activeCategory, setActiveCategory] = useState<string>('all');
+  const [searchQuery, setSearchQuery] = useState<string>('');
+  const [expandedDescriptions, setExpandedDescriptions] = useState<Record<string, boolean>>({});
+  
+  // Get unique categories from exercises
+  const categories = ['all', ...Array.from(new Set(exercises.map(ex => ex.category)))];
+  
+  // Filter exercises based on active category and search query
+  const filteredExercises = exercises.filter(exercise => {
+    const matchesCategory = activeCategory === 'all' || exercise.category === activeCategory;
+    const matchesSearch = exercise.title.toLowerCase().includes(searchQuery.toLowerCase()) || 
+                          exercise.description.toLowerCase().includes(searchQuery.toLowerCase());
+    return matchesCategory && matchesSearch;
+  });
+  
+  const handleCategoryChange = (event: SelectChangeEvent<string>) => {
+    setActiveCategory(event.target.value as string);
+  };
+  
+  const handleSearchChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setSearchQuery(event.target.value);
+  };
+  
+  const toggleDescription = (id: string) => {
+    setExpandedDescriptions(prev => ({
+      ...prev,
+      [id]: !prev[id]
+    }));
+  };
+  
+  const resetFilters = () => {
+    setActiveCategory('all');
+    setSearchQuery('');
+  };
+
+  return (
+    <Container maxWidth="xl" sx={{ py: 4 }}>
+      <HeaderPaper elevation={0}>
+        <Typography variant="h4" gutterBottom fontWeight={600}>
+          Therapeutic Exercises
+        </Typography>
+        <Typography variant="subtitle1">
+          Discover exercises and tools to support your mental wellness journey
+        </Typography>
+      </HeaderPaper>
+      
+      <RoundedPaper sx={{ p: 3, mb: 4, mt: 0 }} elevation={1}>
+        <Grid container spacing={3} alignItems="center">
+          <Grid item xs={12} md={6}>
+            <SearchTextField
+              fullWidth
+              placeholder="Search exercises by keyword..."
+              value={searchQuery}
+              onChange={handleSearchChange}
+              variant="outlined"
+              InputProps={{
+                startAdornment: (
+                  <SearchIcon sx={{ ml: 1, mr: 0.5, color: theme.palette.text.secondary }} />
+                ),
+              }}
+            />
+          </Grid>
+          
+          <Grid item xs={12} md={6}>
+            <Box sx={{ display: 'flex', gap: 2, alignItems: 'center' }}>
+              <FormControl fullWidth variant="outlined">
+                <InputLabel id="category-select-label" sx={{ ml: 1 }}>
+                  Filter by Category
+                </InputLabel>
+                <RoundedSelect
+                  labelId="category-select-label"
+                  id="category-select"
+                  value={activeCategory}
+                  onChange={handleCategoryChange}
+                  label="Filter by Category"
+                  startAdornment={
+                    <FilterListIcon sx={{ ml: 1, color: theme.palette.primary.main }} />
+                  }
+                >
+                  {categories.map(category => (
+                    <MenuItem key={category} value={category}>
+                      {category.charAt(0).toUpperCase() + category.slice(1)}
+                    </MenuItem>
+                  ))}
+                </RoundedSelect>
+              </FormControl>
+              
+              <IconButton 
+                color="primary" 
+                onClick={resetFilters} 
+                sx={{ 
+                  bgcolor: `${theme.palette.primary.main}15`,
+                  borderRadius: 2,
+                  p: 1
+                }}
+              >
+                <RefreshIcon />
+              </IconButton>
+            </Box>
+          </Grid>
+        </Grid>
+      </RoundedPaper>
+      
+      {filteredExercises.length > 0 ? (
+        <Grid container spacing={3}>
+          {filteredExercises.map(exercise => (
+            <Grid item xs={12} sm={6} md={4} key={exercise.id}>
+              <ExerciseCard>
+                <CardMedia
+                  component="img"
+                  height="200"
+                  image={exercise.image}
+                  alt={exercise.title}
+                  sx={{ objectFit: 'cover' }}
+                />
+                
+                <CardContent sx={{ flexGrow: 1 }}>
+                  <Box sx={{ 
+                    display: 'flex',
+                    justifyContent: 'space-between',
+                    alignItems: 'flex-start',
+                    mb: 2
+                  }}>
+                    <Typography variant="h6" component="h3" fontWeight={600}>
+                      {exercise.title}
+                    </Typography>
+                    <CategoryChip label={exercise.category} size="small" />
+                  </Box>
+                  
+                  <Typography variant="body2" color="text.secondary" sx={{ mb: 2 }}>
+                    {expandedDescriptions[exercise.id] 
+                      ? exercise.description 
+                      : `${exercise.description.substring(0, 120)}${exercise.description.length > 120 ? '...' : ''}`
+                    }
+                  </Typography>
+                  
+                  {exercise.description.length > 120 && (
+                    <Button
+                      size="small"
+                      endIcon={expandedDescriptions[exercise.id] ? <KeyboardArrowUpIcon /> : <KeyboardArrowDownIcon />}
+                      onClick={() => toggleDescription(exercise.id)}
+                      sx={{ 
+                        mb: 1, 
+                        textTransform: 'none',
+                        fontWeight: 500,
+                        color: theme.palette.primary.main
+                      }}
+                    >
+                      {expandedDescriptions[exercise.id] ? 'Show less' : 'Read more'}
+                    </Button>
+                  )}
+                  
+                  <Box sx={{ 
+                    display: 'flex', 
+                    alignItems: 'center',
+                    color: theme.palette.text.secondary,
+                    mt: 2
+                  }}>
+                    <AccessTimeIcon fontSize="small" sx={{ mr: 0.5 }} />
+                    <Typography variant="body2">
+                      {exercise.duration} minutes
+                    </Typography>
+                  </Box>
+                </CardContent>
+                
+                <CardActions sx={{ p: 2, pt: 0 }}>
+                  <StartButton
+                    fullWidth
+                    variant="contained"
+                    color="primary"
+                    startIcon={<PlayArrowIcon />}
+                    onClick={() => window.open(exercise.link || '#', '_blank')}
+                  >
+                    Start Exercise
+                  </StartButton>
+                </CardActions>
+              </ExerciseCard>
+            </Grid>
+          ))}
+        </Grid>
+      ) : (
+        <RoundedPaper sx={{ p: 6, textAlign: 'center' }} elevation={1}>
+          <Typography variant="h6" color="text.secondary" gutterBottom>
+            No exercises found matching your criteria.
+          </Typography>
+          <Typography variant="body2" color="text.secondary" paragraph>
+            Try adjusting your search or filters to find what you're looking for.
+          </Typography>
+          <Button
+            variant="contained"
+            color="primary"
+            startIcon={<RefreshIcon />}
+            onClick={resetFilters}
+            sx={{ 
+              mt: 2,
+              borderRadius: 25,
+              px: 3,
+              py: 1
+            }}
+          >
+            Reset Filters
+          </Button>
+        </RoundedPaper>
+      )}
+    </Container>
+  );
+};
+
+export default ExercisesPage;
+
+================
+File: src/theme/theme.ts
+================
+import { createTheme } from '@mui/material/styles';
+
+// Define your color palette here for easy updating
+const colors = {
+  // Primary color - warm teal/green shade that feels calm and professional
+  primary: {
+    main: '#2D6A4F',
+    light: '#74C69D',
+    dark: '#1B4332',
+    contrastText: '#FFFFFF',
+  },
+  // Secondary color - soft amber for accents and highlights
+  secondary: {
+    main: '#E9C46A',
+    light: '#F4E1A7',
+    dark: '#DDA15E',
+    contrastText: '#333333',
+  },
+  // Additional colors for various UI elements
+  success: {
+    main: '#4CAF50',
+    light: '#81C784',
+    dark: '#388E3C',
+  },
+  error: {
+    main: '#F44336',
+    light: '#E57373',
+    dark: '#D32F2F',
+  },
+  warning: {
+    main: '#FF9800',
+    light: '#FFB74D',
+    dark: '#F57C00',
+  },
+  info: {
+    main: '#2196F3',
+    light: '#64B5F6',
+    dark: '#1976D2',
+  },
+  background: {
+    default: '#FAFBFB',
+    paper: '#FFFFFF',
+    subtle: '#F8FAF9',
+  },
+  text: {
+    primary: '#333333',
+    secondary: '#666666',
+    disabled: '#9E9E9E',
+  },
+  divider: 'rgba(0, 0, 0, 0.12)',
+};
+
+// Set up typography using common, readable fonts
+const typography = {
+  fontFamily: '"Nunito Sans", "Roboto", "Helvetica", "Arial", sans-serif',
+  fontSize: 16,
+  h1: {
+    fontFamily: '"Montserrat", "Roboto", "Helvetica", "Arial", sans-serif',
+    fontWeight: 600,
+    fontSize: '2.5rem',
+  },
+  h2: {
+    fontFamily: '"Montserrat", "Roboto", "Helvetica", "Arial", sans-serif',
+    fontWeight: 600,
+    fontSize: '2rem',
+  },
+  h3: {
+    fontFamily: '"Montserrat", "Roboto", "Helvetica", "Arial", sans-serif',
+    fontWeight: 600,
+    fontSize: '1.75rem',
+  },
+  h4: {
+    fontFamily: '"Montserrat", "Roboto", "Helvetica", "Arial", sans-serif',
+    fontWeight: 600,
+    fontSize: '1.5rem',
+  },
+  h5: {
+    fontFamily: '"Montserrat", "Roboto", "Helvetica", "Arial", sans-serif',
+    fontWeight: 600,
+    fontSize: '1.25rem',
+  },
+  h6: {
+    fontFamily: '"Montserrat", "Roboto", "Helvetica", "Arial", sans-serif',
+    fontWeight: 600,
+    fontSize: '1rem',
+  },
+  subtitle1: {
+    fontWeight: 500,
+    fontSize: '1rem',
+  },
+  subtitle2: {
+    fontWeight: 500,
+    fontSize: '0.875rem',
+  },
+  body1: {
+    fontSize: '1rem',
+    lineHeight: 1.6,
+  },
+  body2: {
+    fontSize: '0.875rem',
+    lineHeight: 1.6,
+  },
+  button: {
+    fontWeight: 600,
+    fontSize: '0.875rem',
+    textTransform: 'none',
+  },
+};
+
+// Create custom shape properties 
+const shape = {
+  borderRadius: 8,
+};
+
+// Create custom transitions for animations
+const transitions = {
+  duration: {
+    shortest: 150,
+    shorter: 200,
+    short: 250,
+    standard: 300, // Most common animation length
+    complex: 500,  // For more complex animations
+    enteringScreen: 225,
+    leavingScreen: 195,
+  },
+  easing: {
+    easeOut: 'cubic-bezier(0.0, 0, 0.2, 1)',
+    easeIn: 'cubic-bezier(0.4, 0, 1, 1)',
+    easeInOut: 'cubic-bezier(0.4, 0, 0.2, 1)',
+  },
+};
+
+// Custom shadows
+const shadows = [
+  'none',
+  '0px 2px 1px -1px rgba(0,0,0,0.1),0px 1px 1px 0px rgba(0,0,0,0.07),0px 1px 3px 0px rgba(0,0,0,0.06)',
+  '0px 3px 1px -2px rgba(0,0,0,0.1),0px 2px 2px 0px rgba(0,0,0,0.07),0px 1px 5px 0px rgba(0,0,0,0.06)',
+  '0px 3px 3px -2px rgba(0,0,0,0.1),0px 3px 4px 0px rgba(0,0,0,0.07),0px 1px 8px 0px rgba(0,0,0,0.06)',
+  '0px 2px 4px -1px rgba(0,0,0,0.1),0px 4px 5px 0px rgba(0,0,0,0.07),0px 1px 10px 0px rgba(0,0,0,0.06)',
+  '0px 3px 5px -1px rgba(0,0,0,0.1),0px 5px 8px 0px rgba(0,0,0,0.07),0px 1px 14px 0px rgba(0,0,0,0.06)',
+  '0px 3px 5px -1px rgba(0,0,0,0.1),0px 6px 10px 0px rgba(0,0,0,0.07),0px 1px 18px 0px rgba(0,0,0,0.06)',
+  '0px 4px 5px -2px rgba(0,0,0,0.1),0px 7px 10px 1px rgba(0,0,0,0.07),0px 2px 16px 1px rgba(0,0,0,0.06)',
+  '0px 5px 5px -3px rgba(0,0,0,0.1),0px 8px 10px 1px rgba(0,0,0,0.07),0px 3px 14px 2px rgba(0,0,0,0.06)',
+  '0px 5px 6px -3px rgba(0,0,0,0.1),0px 9px 12px 1px rgba(0,0,0,0.07),0px 3px 16px 2px rgba(0,0,0,0.06)',
+  '0px 6px 6px -3px rgba(0,0,0,0.1),0px 10px 14px 1px rgba(0,0,0,0.07),0px 4px 18px 3px rgba(0,0,0,0.06)',
+  '0px 6px 7px -4px rgba(0,0,0,0.1),0px 11px 15px 1px rgba(0,0,0,0.07),0px 4px 20px 3px rgba(0,0,0,0.06)',
+  '0px 7px 8px -4px rgba(0,0,0,0.1),0px 12px 17px 2px rgba(0,0,0,0.07),0px 5px 22px 4px rgba(0,0,0,0.06)',
+  '0px 7px 8px -4px rgba(0,0,0,0.1),0px 13px 19px 2px rgba(0,0,0,0.07),0px 5px 24px 4px rgba(0,0,0,0.06)',
+  '0px 7px 9px -4px rgba(0,0,0,0.1),0px 14px 21px 2px rgba(0,0,0,0.07),0px 5px 26px 4px rgba(0,0,0,0.06)',
+  '0px 8px 9px -5px rgba(0,0,0,0.1),0px 15px 22px 2px rgba(0,0,0,0.07),0px 6px 28px 5px rgba(0,0,0,0.06)',
+  '0px 8px 10px -5px rgba(0,0,0,0.1),0px 16px 24px 2px rgba(0,0,0,0.07),0px 6px 30px 5px rgba(0,0,0,0.06)',
+  '0px 8px 11px -5px rgba(0,0,0,0.1),0px 17px 26px 2px rgba(0,0,0,0.07),0px 6px 32px 5px rgba(0,0,0,0.06)',
+  '0px 9px 11px -5px rgba(0,0,0,0.1),0px 18px 28px 2px rgba(0,0,0,0.07),0px 7px 34px 6px rgba(0,0,0,0.06)',
+  '0px 9px 12px -6px rgba(0,0,0,0.1),0px 19px 29px 2px rgba(0,0,0,0.07),0px 7px 36px 6px rgba(0,0,0,0.06)',
+  '0px 10px 13px -6px rgba(0,0,0,0.1),0px 20px 31px 3px rgba(0,0,0,0.07),0px 8px 38px 7px rgba(0,0,0,0.06)',
+  '0px 10px 13px -6px rgba(0,0,0,0.1),0px 21px 33px 3px rgba(0,0,0,0.07),0px 8px 40px 7px rgba(0,0,0,0.06)',
+  '0px 10px 14px -6px rgba(0,0,0,0.1),0px 22px 35px 3px rgba(0,0,0,0.07),0px 8px 42px 7px rgba(0,0,0,0.06)',
+  '0px 11px 14px -7px rgba(0,0,0,0.1),0px 23px 36px 3px rgba(0,0,0,0.07),0px 9px 44px 8px rgba(0,0,0,0.06)',
+  '0px 11px 15px -7px rgba(0,0,0,0.1),0px 24px 38px 3px rgba(0,0,0,0.07),0px 9px 46px 8px rgba(0,0,0,0.06)',
+];
+
+// Create the theme
+const theme = createTheme({
+  palette: {
+    primary: colors.primary,
+    secondary: colors.secondary,
+    success: colors.success,
+    error: colors.error,
+    warning: colors.warning,
+    info: colors.info,
+    background: colors.background,
+    text: colors.text,
+    divider: colors.divider,
+  },
+  typography,
+  shape,
+  transitions,
+  shadows,
+  // Add custom components styling
+  components: {
+    MuiButton: {
+      styleOverrides: {
+        root: {
+          padding: '10px 24px',
+          borderRadius: shape.borderRadius,
+        },
+        contained: {
+          boxShadow: shadows[2],
+          '&:hover': {
+            boxShadow: shadows[4],
+          },
+        },
+        outlined: {
+          borderWidth: 2,
+          '&:hover': {
+            borderWidth: 2,
+          },
+        },
+      },
+    },
+    MuiCard: {
+      styleOverrides: {
+        root: {
+          borderRadius: shape.borderRadius,
+          boxShadow: shadows[2],
+          transition: `box-shadow ${transitions.duration.standard}ms ${transitions.easing.easeInOut}`,
+          '&:hover': {
+            boxShadow: shadows[4],
+          },
+        },
+      },
+    },
+    MuiAppBar: {
+      styleOverrides: {
+        root: {
+          boxShadow: shadows[2],
+        },
+      },
+    },
+    MuiPaper: {
+      styleOverrides: {
+        root: {
+          borderRadius: shape.borderRadius,
+        },
+        elevation1: {
+          boxShadow: shadows[1],
+        },
+        elevation2: {
+          boxShadow: shadows[2],
+        },
+        elevation3: {
+          boxShadow: shadows[3],
+        },
+        elevation4: {
+          boxShadow: shadows[4],
+        },
+      },
+    },
+  },
+});
+
+export default theme;
+
+================
+File: .gitignore
+================
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+node_modules
+dist
+dist-ssr
+*.local
+
+# Editor directories and files
+.vscode/*
+!.vscode/extensions.json
+.idea
+.DS_Store
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+================
+File: eslint.config.js
+================
+import js from '@eslint/js'
+import globals from 'globals'
+import reactHooks from 'eslint-plugin-react-hooks'
+import reactRefresh from 'eslint-plugin-react-refresh'
+import tseslint from 'typescript-eslint'
+
+export default tseslint.config(
+  { ignores: ['dist'] },
+  {
+    extends: [js.configs.recommended, ...tseslint.configs.recommended],
+    files: ['**/*.{ts,tsx}'],
+    languageOptions: {
+      ecmaVersion: 2020,
+      globals: globals.browser,
+    },
+    plugins: {
+      'react-hooks': reactHooks,
+      'react-refresh': reactRefresh,
+    },
+    rules: {
+      ...reactHooks.configs.recommended.rules,
+      'react-refresh/only-export-components': [
+        'warn',
+        { allowConstantExport: true },
+      ],
+    },
+  },
+)
+
+================
+File: index.html
+================
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vite + React + TS</title>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>
+
+================
+File: package.json
+================
+{
+  "name": "calmcompass-repo",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc -b && vite build",
+    "lint": "eslint .",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "@emotion/react": "^11.14.0",
+    "@emotion/styled": "^11.14.0",
+    "@fontsource/montserrat": "^5.2.5",
+    "@fontsource/nunito-sans": "^5.2.5",
+    "@mui/icons-material": "^7.0.0",
+    "@mui/material": "^7.0.0",
+    "material-icons": "^1.13.14",
+    "motion": "^12.6.2",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.21.0",
+    "@types/react": "^19.0.10",
+    "@types/react-dom": "^19.0.4",
+    "@vitejs/plugin-react-swc": "^3.8.0",
+    "eslint": "^9.21.0",
+    "eslint-plugin-react-hooks": "^5.1.0",
+    "eslint-plugin-react-refresh": "^0.4.19",
+    "globals": "^15.15.0",
+    "typescript": "~5.7.2",
+    "typescript-eslint": "^8.24.1",
+    "vite": "^6.2.0"
+  }
+}
+
+================
+File: public/vite.svg
+================
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" role="img" class="iconify iconify--logos" width="31.88" height="32" preserveAspectRatio="xMidYMid meet" viewBox="0 0 256 257"><defs><linearGradient id="IconifyId1813088fe1fbc01fb466" x1="-.828%" x2="57.636%" y1="7.652%" y2="78.411%"><stop offset="0%" stop-color="#41D1FF"></stop><stop offset="100%" stop-color="#BD34FE"></stop></linearGradient><linearGradient id="IconifyId1813088fe1fbc01fb467" x1="43.376%" x2="50.316%" y1="2.242%" y2="89.03%"><stop offset="0%" stop-color="#FFEA83"></stop><stop offset="8.333%" stop-color="#FFDD35"></stop><stop offset="100%" stop-color="#FFA800"></stop></linearGradient></defs><path fill="url(#IconifyId1813088fe1fbc01fb466)" d="M255.153 37.938L134.897 252.976c-2.483 4.44-8.862 4.466-11.382.048L.875 37.958c-2.746-4.814 1.371-10.646 6.827-9.67l120.385 21.517a6.537 6.537 0 0 0 2.322-.004l117.867-21.483c5.438-.991 9.574 4.796 6.877 9.62Z"></path><path fill="url(#IconifyId1813088fe1fbc01fb467)" d="M185.432.063L96.44 17.501a3.268 3.268 0 0 0-2.634 3.014l-5.474 92.456a3.268 3.268 0 0 0 3.997 3.378l24.777-5.718c2.318-.535 4.413 1.507 3.936 3.838l-7.361 36.047c-.495 2.426 1.782 4.5 4.151 3.78l15.304-4.649c2.372-.72 4.652 1.36 4.15 3.788l-11.698 56.621c-.732 3.542 3.979 5.473 5.943 2.437l1.313-2.028l72.516-144.72c1.215-2.423-.88-5.186-3.54-4.672l-25.505 4.922c-2.396.462-4.435-1.77-3.759-4.114l16.646-57.705c.677-2.35-1.37-4.583-3.769-4.113Z"></path></svg>
+
+================
+File: README.md
+================
+# 🧠 CalmCompass: The All-in-One Practice Management Solution
+
+## 🌿 Transform Your Mental Health Practice
+
+CalmCompass is a comprehensive practice management platform designed specifically for mental health professionals. Our solution streamlines the entire administrative workflow for therapists and psychologists, while providing a seamless, supportive experience for their clients.
+
+## ✨ Key Features
+
+- 🌐 **Professional Web Presence** - Establish a customized, SEO-optimized website for your practice
+- 📅 **Smart Scheduling** - Manage appointments through an intuitive booking system
+- 🔒 **Secure Documentation** - Safely store and access client notes and treatment plans
+- 🧩 **Therapeutic Tools** - Deliver homework assignments, mood tracking, and guided journals
+- 📋 **Compliance Assured** - HIPAA and GDPR compliance across all communications and data storage
+
+## 🚀 Get Started in Minutes
+
+Mental health practitioners can launch their digital practice with ease:
+1. ✍️ Sign up at calmcompass.io
+2. 🎨 Customize your clinic profile and practitioner details
+3. 🔗 Connect your preferred domain
+4. 🎉 Start welcoming clients to your new digital practice
+
+## 💫 Why Choose CalmCompass?
+
+CalmCompass handles all the technical infrastructure, allowing you to focus on what matters most: delivering exceptional care to your clients. Our platform grows with your practice, providing the tools you need at every stage of your professional journey.
+
+## 🤝 Supporting Mental Wellness Together
+
+Join our community of mental health professionals who are using technology to enhance accessibility, continuity of care, and client engagement. CalmCompass isn't just software—it's a partner in your mission to improve mental wellness.
+
+---
+
+*CalmCompass: Where compassionate care meets cutting-edge technology* 💙
+
+================
+File: src/App.css
+================
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+}
+
+.logo {
+  height: 6em;
+  padding: 1.5em;
+  will-change: filter;
+  transition: filter 300ms;
+}
+.logo:hover {
+  filter: drop-shadow(0 0 2em #646cffaa);
+}
+.logo.react:hover {
+  filter: drop-shadow(0 0 2em #61dafbaa);
+}
+
+@keyframes logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  a:nth-of-type(2) .logo {
+    animation: logo-spin infinite 20s linear;
+  }
+}
+
+.card {
+  padding: 2em;
+}
+
+.read-the-docs {
+  color: #888;
+}
+
+================
+File: src/App.tsx
+================
+import React, { useState } from 'react';
+import { 
+  ThemeProvider, 
+  createTheme, 
+  CssBaseline, 
+  Box 
+} from '@mui/material';
+
+// Import components
+import Header from './common/Header';
+import BookingsPage from './pages/bookings/BookingsPage';
+import AccountPage from './pages/account/AccountPage';
+import ExercisesPage from './pages/exercises/ExercisesPage';
+
+// Create theme
+const theme = createTheme({
+  palette: {
+    primary: {
+      main: '#2D6A4F', // Calm green
+      light: '#74C69D',
+      dark: '#1B4332',
+      contrastText: '#FFFFFF',
+    },
+    secondary: {
+      main: '#E9C46A', // Warm amber
+      light: '#F4E1A7',
+      dark: '#DDA15E',
+      contrastText: '#333333',
+    },
+    success: {
+      main: '#4CAF50',
+      light: '#E8F5E9',
+      dark: '#2E7D32',
+    },
+    error: {
+      main: '#F44336',
+      light: '#FFEBEE',
+      dark: '#C62828',
+    },
+    info: {
+      main: '#2196F3',
+      light: '#E3F2FD',
+      dark: '#1565C0',
+    },
+    warning: {
+      main: '#FF9800',
+      light: '#FFF3E0',
+      dark: '#EF6C00',
+    },
+    background: {
+      default: '#FAFBFB',
+      paper: '#FFFFFF',
+    },
+    text: {
+      primary: '#333333',
+      secondary: '#666666',
+    },
+    divider: 'rgba(0, 0, 0, 0.12)',
+  },
+  typography: {
+    fontFamily: '"Nunito Sans", "Roboto", "Helvetica", "Arial", sans-serif',
+    fontSize: 16,
+    h1: {
+      fontFamily: '"Montserrat", "Roboto", "Helvetica", "Arial", sans-serif',
+      fontWeight: 600,
+    },
+    h2: {
+      fontFamily: '"Montserrat", "Roboto", "Helvetica", "Arial", sans-serif',
+      fontWeight: 600,
+    },
+    h3: {
+      fontFamily: '"Montserrat", "Roboto", "Helvetica", "Arial", sans-serif',
+      fontWeight: 600,
+    },
+    h4: {
+      fontFamily: '"Montserrat", "Roboto", "Helvetica", "Arial", sans-serif',
+      fontWeight: 600,
+    },
+    h5: {
+      fontFamily: '"Montserrat", "Roboto", "Helvetica", "Arial", sans-serif',
+      fontWeight: 600,
+    },
+    h6: {
+      fontFamily: '"Montserrat", "Roboto", "Helvetica", "Arial", sans-serif',
+      fontWeight: 600,
+    },
+    button: {
+      textTransform: 'none',
+      fontWeight: 500,
+    },
+  },
+  shape: {
+    borderRadius: 12,
+  },
+  components: {
+    MuiButton: {
+      styleOverrides: {
+        root: {
+          borderRadius: 25,
+          padding: '8px 16px',
+          transition: 'all 0.3s ease',
+        },
+        contained: {
+          boxShadow: '0px 4px 10px rgba(0, 0, 0, 0.1)',
+          '&:hover': {
+            boxShadow: '0px 6px 15px rgba(0, 0, 0, 0.15)',
+            transform: 'translateY(-2px)',
+          },
+        },
+      },
+    },
+    MuiPaper: {
+      styleOverrides: {
+        rounded: {
+          borderRadius: 16,
+        },
+      },
+    },
+    MuiCard: {
+      styleOverrides: {
+        root: {
+          borderRadius: 16,
+          overflow: 'hidden',
+        },
+      },
+    },
+    MuiChip: {
+      styleOverrides: {
+        root: {
+          borderRadius: 16,
+        },
+      },
+    },
+    MuiTab: {
+      styleOverrides: {
+        root: {
+          borderRadius: '8px 8px 0 0',
+          textTransform: 'none',
+          fontWeight: 500,
+        },
+      },
+    },
+  },
+});
+
+// Types
+type NavigationOption = 'bookings' | 'account' | 'exercises' | 'login' | 'home';
+
+interface PractitionerName {
+  prefix?: string;
+  firstName: string;
+  lastName: string;
+  credentials?: string;
+}
+
+interface Practitioner {
+  id: string;
+  name: PractitionerName;
+  role: string;
+  profileImage: string;
+}
+
+interface Appointment {
+  id: string;
+  date: string;
+  time: string;
+  service: string;
+  practitioner: string;
+}
+
+interface AppointmentHistoryItem extends Omit<Appointment, 'time'> {
+  status: 'Completed' | 'Cancelled' | 'Rescheduled';
+}
+
+interface WaitListRequest {
+  id: string;
+  service: string;
+  client: string;
+  availability: string;
+}
+
+interface UserData {
+  prefix?: string;
+  firstName: string;
+  lastName: string;
+  appointments: Appointment[];
+  appointmentHistory: AppointmentHistoryItem[];
+  waitListRequests: WaitListRequest[];
+}
+
+interface Exercise {
+  id: string;
+  title: string;
+  category: string;
+  description: string;
+  duration: number;
+  image: string;
+  link: string;
+}
+
+const App: React.FC = () => {
+  // State for current page/route
+  const [currentPage, setCurrentPage] = useState<NavigationOption>('bookings');
+  const [userName, setUserName] = useState<string>('Alex');
+  
+  // Sample data for practitioners
+  const practitioners: Practitioner[] = [
+    {
+      id: 'prac-001',
+      name: {
+        prefix: 'Dr.',
+        firstName: 'Sarah',
+        lastName: 'Johnson',
+        credentials: 'PhD, LCSW'
+      },
+      role: 'Clinical Psychologist',
+      profileImage: 'https://randomuser.me/api/portraits/women/44.jpg'
+    },
+    {
+      id: 'prac-002',
+      name: {
+        prefix: '',
+        firstName: 'Michael',
+        lastName: 'Chen',
+        credentials: 'LPC, NCC'
+      },
+      role: 'Licensed Professional Counselor',
+      profileImage: 'https://randomuser.me/api/portraits/men/32.jpg'
+    },
+    {
+      id: 'prac-003',
+      name: {
+        prefix: '',
+        firstName: 'Jasmine',
+        lastName: 'Williams',
+        credentials: 'LMFT'
+      },
+      role: 'Marriage and Family Therapist',
+      profileImage: 'https://randomuser.me/api/portraits/women/68.jpg'
+    }
+  ];
+  
+  // Sample user data
+  const userData: UserData = {
+    prefix: 'Mr.',
+    firstName: 'Alex',
+    lastName: 'Smith',
+    appointments: [
+      {
+        id: 'apt-001',
+        date: 'March 28, 2025',
+        time: '3:00 PM - 4:00 PM',
+        service: 'Individual Adult Counselling',
+        practitioner: 'Dr. Sarah Johnson'
+      },
+      {
+        id: 'apt-002',
+        date: 'April 11, 2025',
+        time: '2:00 PM - 3:00 PM',
+        service: 'Individual Adult Counselling',
+        practitioner: 'Dr. Sarah Johnson'
+      }
+    ],
+    appointmentHistory: [
+      {
+        id: 'hist-001',
+        date: 'February 15, 2025',
+        service: 'Individual Adult Counselling',
+        practitioner: 'Dr. Sarah Johnson',
+        status: 'Completed'
+      },
+      {
+        id: 'hist-002',
+        date: 'January 30, 2025',
+        service: 'Individual Adult Counselling',
+        practitioner: 'Dr. Sarah Johnson',
+        status: 'Completed'
+      },
+      {
+        id: 'hist-003',
+        date: 'January 8, 2025',
+        service: 'Individual Adult Counselling',
+        practitioner: 'Michael Chen',
+        status: 'Cancelled'
+      }
+    ],
+    waitListRequests: []
+  };
+  
+  // Sample exercises data
+  const exercises: Exercise[] = [
+    {
+      id: 'ex-001',
+      title: 'Mindful Breathing',
+      category: 'mindfulness',
+      description: 'A guided breathing exercise to help reduce anxiety and increase present-moment awareness. This exercise walks you through a simple but effective technique that can be used anywhere to quickly center yourself and reduce stress.',
+      duration: 10,
+      image: 'https://images.unsplash.com/photo-1506126613408-eca07ce68773?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60',
+      link: '#'
+    },
+    {
+      id: 'ex-002',
+      title: 'Progressive Muscle Relaxation',
+      category: 'relaxation',
+      description: 'This guided exercise helps you systematically tense and relax different muscle groups throughout your body. It\'s particularly helpful for reducing physical tension that often accompanies stress and anxiety.',
+      duration: 15,
+      image: 'https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60',
+      link: '#'
+    },
+    {
+      id: 'ex-003',
+      title: 'Thought Record Journal',
+      category: 'cognitive',
+      description: 'An interactive journal exercise based on cognitive behavioral therapy principles. This tool helps you identify and challenge negative thought patterns by examining the evidence for and against your thoughts, and developing more balanced perspectives.',
+      duration: 20,
+      image: 'https://images.unsplash.com/photo-1517842645767-c639042777db?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60',
+      link: '#'
+    },
+    {
+      id: 'ex-004',
+      title: 'Values Clarification',
+      category: 'personal growth',
+      description: 'This reflective exercise helps you identify and prioritize your core values, which can guide decision-making and provide a sense of meaning and purpose. The exercise includes a comprehensive list of values and guided questions to help you understand what matters most to you.',
+      duration: 25,
+      image: 'https://images.unsplash.com/photo-1492681290082-e932832941e6?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60',
+      link: '#'
+    },
+    {
+      id: 'ex-005',
+      title: 'Gratitude Practice',
+      category: 'positive psychology',
+      description: 'A guided exercise to help you cultivate gratitude by reflecting on and recording things you appreciate in your life. Regular gratitude practice has been shown to increase positive emotions, reduce stress, and improve overall wellbeing.',
+      duration: 10,
+      image: 'https://images.unsplash.com/photo-1490731727228-d56f39758d0e?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60',
+      link: '#'
+    },
+    {
+      id: 'ex-006',
+      title: 'Emotional Awareness Check-in',
+      category: 'emotional regulation',
+      description: 'This exercise guides you through identifying and naming your emotions, recognizing how they manifest in your body, and developing strategies for managing intense feelings. Regular practice can improve emotional intelligence and self-regulation skills.',
+      duration: 15,
+      image: 'https://images.unsplash.com/photo-1476231682828-37e571bc172f?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60',
+      link: '#'
+    }
+  ];
+  
+  // Handle navigation between pages
+  const handleNavigate = (page: NavigationOption) => {
+    setCurrentPage(page);
+  };
+  
+  // Render the appropriate page based on currentPage state
+  const renderPage = () => {
+    switch (currentPage) {
+      case 'bookings':
+        return <BookingsPage practitioners={practitioners} />;
+      case 'account':
+        return <AccountPage userData={userData} />;
+      case 'exercises':
+        return <ExercisesPage exercises={exercises} />;
+      case 'home':
+        return <BookingsPage practitioners={practitioners} />;
+      case 'login':
+        // Redirect to bookings page for now
+        setCurrentPage('bookings');
+        return <BookingsPage practitioners={practitioners} />;
+      default:
+        return <BookingsPage practitioners={practitioners} />;
+    }
+  };
+  
+  return (
+    <ThemeProvider theme={theme}>
+      <CssBaseline />
+      <Box sx={{ 
+        minHeight: '100vh',
+        display: 'flex',
+        flexDirection: 'column',
+        bgcolor: '#f5f7f9'
+      }}>
+        <Header
+          userName={userName}
+          currentPage={currentPage}
+          onNavigate={handleNavigate}
+        />
+        <Box sx={{ flexGrow: 1 }}>
+          {renderPage()}
+        </Box>
+        <Box 
+          component="footer" 
+          sx={{ 
+            py: 3, 
+            textAlign: 'center',
+            bgcolor: theme.palette.background.paper,
+            borderTop: `1px solid ${theme.palette.divider}`,
+            mt: 4
+          }}
+        >
+          <Box 
+            sx={{ 
+              maxWidth: 'xl', 
+              mx: 'auto', 
+              px: 3,
+              color: theme.palette.text.secondary,
+              fontSize: '0.875rem'
+            }}
+          >
+            © {new Date().getFullYear()} CalmCompass. All rights reserved.
+          </Box>
+        </Box>
+      </Box>
+    </ThemeProvider>
+  );
+};
+
+export default App;
+
+================
+File: src/assets/react.svg
+================
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" role="img" class="iconify iconify--logos" width="35.93" height="32" preserveAspectRatio="xMidYMid meet" viewBox="0 0 256 228"><path fill="#00D8FF" d="M210.483 73.824a171.49 171.49 0 0 0-8.24-2.597c.465-1.9.893-3.777 1.273-5.621c6.238-30.281 2.16-54.676-11.769-62.708c-13.355-7.7-35.196.329-57.254 19.526a171.23 171.23 0 0 0-6.375 5.848a155.866 155.866 0 0 0-4.241-3.917C100.759 3.829 77.587-4.822 63.673 3.233C50.33 10.957 46.379 33.89 51.995 62.588a170.974 170.974 0 0 0 1.892 8.48c-3.28.932-6.445 1.924-9.474 2.98C17.309 83.498 0 98.307 0 113.668c0 15.865 18.582 31.778 46.812 41.427a145.52 145.52 0 0 0 6.921 2.165a167.467 167.467 0 0 0-2.01 9.138c-5.354 28.2-1.173 50.591 12.134 58.266c13.744 7.926 36.812-.22 59.273-19.855a145.567 145.567 0 0 0 5.342-4.923a168.064 168.064 0 0 0 6.92 6.314c21.758 18.722 43.246 26.282 56.54 18.586c13.731-7.949 18.194-32.003 12.4-61.268a145.016 145.016 0 0 0-1.535-6.842c1.62-.48 3.21-.974 4.76-1.488c29.348-9.723 48.443-25.443 48.443-41.52c0-15.417-17.868-30.326-45.517-39.844Zm-6.365 70.984c-1.4.463-2.836.91-4.3 1.345c-3.24-10.257-7.612-21.163-12.963-32.432c5.106-11 9.31-21.767 12.459-31.957c2.619.758 5.16 1.557 7.61 2.4c23.69 8.156 38.14 20.213 38.14 29.504c0 9.896-15.606 22.743-40.946 31.14Zm-10.514 20.834c2.562 12.94 2.927 24.64 1.23 33.787c-1.524 8.219-4.59 13.698-8.382 15.893c-8.067 4.67-25.32-1.4-43.927-17.412a156.726 156.726 0 0 1-6.437-5.87c7.214-7.889 14.423-17.06 21.459-27.246c12.376-1.098 24.068-2.894 34.671-5.345a134.17 134.17 0 0 1 1.386 6.193ZM87.276 214.515c-7.882 2.783-14.16 2.863-17.955.675c-8.075-4.657-11.432-22.636-6.853-46.752a156.923 156.923 0 0 1 1.869-8.499c10.486 2.32 22.093 3.988 34.498 4.994c7.084 9.967 14.501 19.128 21.976 27.15a134.668 134.668 0 0 1-4.877 4.492c-9.933 8.682-19.886 14.842-28.658 17.94ZM50.35 144.747c-12.483-4.267-22.792-9.812-29.858-15.863c-6.35-5.437-9.555-10.836-9.555-15.216c0-9.322 13.897-21.212 37.076-29.293c2.813-.98 5.757-1.905 8.812-2.773c3.204 10.42 7.406 21.315 12.477 32.332c-5.137 11.18-9.399 22.249-12.634 32.792a134.718 134.718 0 0 1-6.318-1.979Zm12.378-84.26c-4.811-24.587-1.616-43.134 6.425-47.789c8.564-4.958 27.502 2.111 47.463 19.835a144.318 144.318 0 0 1 3.841 3.545c-7.438 7.987-14.787 17.08-21.808 26.988c-12.04 1.116-23.565 2.908-34.161 5.309a160.342 160.342 0 0 1-1.76-7.887Zm110.427 27.268a347.8 347.8 0 0 0-7.785-12.803c8.168 1.033 15.994 2.404 23.343 4.08c-2.206 7.072-4.956 14.465-8.193 22.045a381.151 381.151 0 0 0-7.365-13.322Zm-45.032-43.861c5.044 5.465 10.096 11.566 15.065 18.186a322.04 322.04 0 0 0-30.257-.006c4.974-6.559 10.069-12.652 15.192-18.18ZM82.802 87.83a323.167 323.167 0 0 0-7.227 13.238c-3.184-7.553-5.909-14.98-8.134-22.152c7.304-1.634 15.093-2.97 23.209-3.984a321.524 321.524 0 0 0-7.848 12.897Zm8.081 65.352c-8.385-.936-16.291-2.203-23.593-3.793c2.26-7.3 5.045-14.885 8.298-22.6a321.187 321.187 0 0 0 7.257 13.246c2.594 4.48 5.28 8.868 8.038 13.147Zm37.542 31.03c-5.184-5.592-10.354-11.779-15.403-18.433c4.902.192 9.899.29 14.978.29c5.218 0 10.376-.117 15.453-.343c-4.985 6.774-10.018 12.97-15.028 18.486Zm52.198-57.817c3.422 7.8 6.306 15.345 8.596 22.52c-7.422 1.694-15.436 3.058-23.88 4.071a382.417 382.417 0 0 0 7.859-13.026a347.403 347.403 0 0 0 7.425-13.565Zm-16.898 8.101a358.557 358.557 0 0 1-12.281 19.815a329.4 329.4 0 0 1-23.444.823c-7.967 0-15.716-.248-23.178-.732a310.202 310.202 0 0 1-12.513-19.846h.001a307.41 307.41 0 0 1-10.923-20.627a310.278 310.278 0 0 1 10.89-20.637l-.001.001a307.318 307.318 0 0 1 12.413-19.761c7.613-.576 15.42-.876 23.31-.876H128c7.926 0 15.743.303 23.354.883a329.357 329.357 0 0 1 12.335 19.695a358.489 358.489 0 0 1 11.036 20.54a329.472 329.472 0 0 1-11 20.722Zm22.56-122.124c8.572 4.944 11.906 24.881 6.52 51.026c-.344 1.668-.73 3.367-1.15 5.09c-10.622-2.452-22.155-4.275-34.23-5.408c-7.034-10.017-14.323-19.124-21.64-27.008a160.789 160.789 0 0 1 5.888-5.4c18.9-16.447 36.564-22.941 44.612-18.3ZM128 90.808c12.625 0 22.86 10.235 22.86 22.86s-10.235 22.86-22.86 22.86s-22.86-10.235-22.86-22.86s10.235-22.86 22.86-22.86Z"></path></svg>
+
+================
+File: src/index.css
+================
+:root {
+  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+
+  color-scheme: light dark;
+  color: rgba(255, 255, 255, 0.87);
+  background-color: #242424;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+a {
+  font-weight: 500;
+  color: #646cff;
+  text-decoration: inherit;
+}
+a:hover {
+  color: #535bf2;
+}
+
+body {
+  margin: 0;
+  display: flex;
+  place-items: center;
+  min-width: 320px;
+  min-height: 100vh;
+}
+
+h1 {
+  font-size: 3.2em;
+  line-height: 1.1;
+}
+
+button {
+  border-radius: 8px;
+  border: 1px solid transparent;
+  padding: 0.6em 1.2em;
+  font-size: 1em;
+  font-weight: 500;
+  font-family: inherit;
+  background-color: #1a1a1a;
+  cursor: pointer;
+  transition: border-color 0.25s;
+}
+button:hover {
+  border-color: #646cff;
+}
+button:focus,
+button:focus-visible {
+  outline: 4px auto -webkit-focus-ring-color;
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    color: #213547;
+    background-color: #ffffff;
+  }
+  a:hover {
+    color: #747bff;
+  }
+  button {
+    background-color: #f9f9f9;
+  }
+}
+
+================
+File: src/main.tsx
+================
+import React from 'react';
+import { createRoot } from 'react-dom/client';
+import App from './App';
+import '@fontsource/nunito-sans/300.css';
+import '@fontsource/nunito-sans/400.css';
+import '@fontsource/nunito-sans/600.css';
+import '@fontsource/nunito-sans/700.css';
+import '@fontsource/montserrat/500.css';
+import '@fontsource/montserrat/600.css';
+import '@fontsource/montserrat/700.css';
+import './index.css';
+
+const container = document.getElementById('root');
+
+if (container) {
+  const root = createRoot(container);
+  
+  root.render(
+    <React.StrictMode>
+      <App />
+    </React.StrictMode>
+  );
+} else {
+  console.error('Failed to find the root element');
+}
+
+================
+File: src/vite-env.d.ts
+================
+/// <reference types="vite/client" />
+
+================
+File: tsconfig.app.json
+================
+{
+  "compilerOptions": {
+    "tsBuildInfoFile": "./node_modules/.tmp/tsconfig.app.tsbuildinfo",
+    "target": "ES2020",
+    "useDefineForClassFields": true,
+    "lib": ["ES2020", "DOM", "DOM.Iterable"],
+    "module": "ESNext",
+    "skipLibCheck": true,
+
+    /* Bundler mode */
+    "moduleResolution": "bundler",
+    "allowImportingTsExtensions": true,
+    "isolatedModules": true,
+    "moduleDetection": "force",
+    "noEmit": true,
+    "jsx": "react-jsx",
+
+    /* Linting */
+    "strict": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "noFallthroughCasesInSwitch": true,
+    "noUncheckedSideEffectImports": true
+  },
+  "include": ["src"]
+}
+
+================
+File: tsconfig.json
+================
+{
+  "files": [],
+  "references": [
+    { "path": "./tsconfig.app.json" },
+    { "path": "./tsconfig.node.json" }
+  ]
+}
+
+================
+File: tsconfig.node.json
+================
+{
+  "compilerOptions": {
+    "tsBuildInfoFile": "./node_modules/.tmp/tsconfig.node.tsbuildinfo",
+    "target": "ES2022",
+    "lib": ["ES2023"],
+    "module": "ESNext",
+    "skipLibCheck": true,
+
+    /* Bundler mode */
+    "moduleResolution": "bundler",
+    "allowImportingTsExtensions": true,
+    "isolatedModules": true,
+    "moduleDetection": "force",
+    "noEmit": true,
+
+    /* Linting */
+    "strict": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "noFallthroughCasesInSwitch": true,
+    "noUncheckedSideEffectImports": true
+  },
+  "include": ["vite.config.ts"]
+}
+
+================
+File: vite.config.ts
+================
+import { defineConfig } from 'vite'
+import react from '@vitejs/plugin-react-swc'
+
+// https://vite.dev/config/
+export default defineConfig({
+  plugins: [react()],
+})
+
+
+
+================================================================
+End of Codebase
+================================================================

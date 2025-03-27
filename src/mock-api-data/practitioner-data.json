@@ -1,0 +1,341 @@
+// src/mock-api-data/practitioner-data.json
+{
+    "practitioners": [
+      {
+        "id": "prac-001",
+        "name": {
+          "prefix": "Dr.",
+          "firstName": "Sarah",
+          "lastName": "Johnson",
+          "credentials": "PhD, LCSW"
+        },
+        "role": "Clinical Psychologist",
+        "profileImage": "https://randomuser.me/api/portraits/women/44.jpg",
+        "shortBio": "Dr. Johnson specializes in anxiety disorders and trauma-informed care with over 15 years of experience.",
+        "specialties": ["Anxiety Disorders", "Post-Traumatic Stress Disorder", "Depression"],
+        "acceptingNewClients": true,
+        "insuranceAccepted": ["Aetna", "Blue Cross Blue Shield", "Cigna", "Medicare", "United Healthcare"],
+        "sessionTypes": ["Individual", "Group"],
+        "sessionFormat": ["In-person", "Virtual"],
+        "locationIds": ["loc-001", "loc-002"]
+      },
+      {
+        "id": "prac-002",
+        "name": {
+          "prefix": "",
+          "firstName": "Michael",
+          "lastName": "Chen",
+          "credentials": "LPC, NCC"
+        },
+        "role": "Licensed Professional Counselor",
+        "profileImage": "https://randomuser.me/api/portraits/men/32.jpg",
+        "shortBio": "Michael specializes in relationship counseling and helping clients navigate cultural identity issues.",
+        "specialties": ["Couples Therapy", "Relationship Issues", "Cultural Identity", "LGBTQ+ Affirming Therapy"],
+        "acceptingNewClients": true,
+        "insuranceAccepted": ["Aetna", "Blue Cross Blue Shield", "Cigna", "Kaiser Permanente"],
+        "sessionTypes": ["Individual", "Couples"],
+        "sessionFormat": ["In-person", "Virtual"],
+        "locationIds": ["loc-001"]
+      },
+      {
+        "id": "prac-003",
+        "name": {
+          "prefix": "",
+          "firstName": "Jasmine",
+          "lastName": "Williams",
+          "credentials": "LMFT"
+        },
+        "role": "Marriage and Family Therapist",
+        "profileImage": "https://randomuser.me/api/portraits/women/68.jpg",
+        "shortBio": "Jasmine specializes in family therapy and play therapy for children, with a focus on building resilience.",
+        "specialties": ["Child and Adolescent Therapy", "Family Systems", "Parenting Support", "Behavioral Issues"],
+        "acceptingNewClients": true,
+        "insuranceAccepted": ["Aetna", "Blue Cross Blue Shield", "Oregon Health Plan", "UnitedHealthcare"],
+        "sessionTypes": ["Individual", "Family", "Group"],
+        "sessionFormat": ["In-person", "Virtual"],
+        "locationIds": ["loc-001", "loc-002"]
+      }
+    ]
+  }
+  
+  // src/mock-api-data/service-data.json
+  {
+    "services": [
+      {
+        "id": "serv-001",
+        "name": "Individual Therapy",
+        "description": "One-on-one therapy sessions tailored to address your specific mental health needs and goals.",
+        "duration": "50 minutes",
+        "virtualAvailable": true,
+        "ageGroups": ["Adolescents", "Young Adults", "Adults", "Older Adults"]
+      },
+      {
+        "id": "serv-002",
+        "name": "Couples Therapy",
+        "description": "Therapy for partners seeking to improve their relationship, enhance communication, and resolve conflicts.",
+        "duration": "80 minutes",
+        "virtualAvailable": true,
+        "ageGroups": ["Young Adults", "Adults", "Older Adults"]
+      },
+      {
+        "id": "serv-003",
+        "name": "Family Therapy",
+        "description": "Therapy that brings family members together to work through challenges and improve communication patterns.",
+        "duration": "80 minutes",
+        "virtualAvailable": true,
+        "ageGroups": ["Children", "Adolescents", "Young Adults", "Adults", "Older Adults"]
+      },
+      {
+        "id": "serv-004",
+        "name": "Child & Play Therapy",
+        "description": "Specialized therapy for children using play, art, and other developmentally appropriate techniques.",
+        "duration": "45 minutes",
+        "virtualAvailable": true,
+        "ageGroups": ["Children", "Adolescents"]
+      }
+    ]
+  }
+  
+  // src/mock-api-data/user-data.json
+  {
+    "userData": {
+      "id": "user-001",
+      "prefix": "Mr.",
+      "firstName": "Alex",
+      "lastName": "Smith",
+      "email": "alex.smith@example.com",
+      "phone": "555-123-4567",
+      "dateOfBirth": "1985-06-15",
+      "address": {
+        "street": "123 Main St",
+        "city": "Portland",
+        "state": "OR",
+        "zipCode": "97201"
+      },
+      "emergencyContact": {
+        "name": "Emily Smith",
+        "relationship": "Spouse",
+        "phone": "555-987-6543"
+      },
+      "insurance": {
+        "provider": "Blue Cross Blue Shield",
+        "policyNumber": "BCBS12345678",
+        "groupNumber": "GRP987654",
+        "primaryInsured": "Self"
+      },
+      "communicationPreferences": {
+        "appointmentReminders": ["email", "text"],
+        "practiceUpdates": ["email"],
+        "marketingEmails": false
+      }
+    }
+  }
+  
+  // src/mock-api-data/appointment-data.json
+  {
+    "appointments": {
+      "upcoming": [
+        {
+          "id": "apt-001",
+          "date": "March 28, 2025",
+          "time": "3:00 PM - 4:00 PM",
+          "service": "Individual Adult Counselling",
+          "practitioner": "Dr. Sarah Johnson",
+          "location": "Main Office",
+          "format": "In-person",
+          "status": "Confirmed"
+        },
+        {
+          "id": "apt-002",
+          "date": "April 11, 2025",
+          "time": "2:00 PM - 3:00 PM",
+          "service": "Individual Adult Counselling",
+          "practitioner": "Dr. Sarah Johnson",
+          "location": "Main Office",
+          "format": "In-person",
+          "status": "Confirmed"
+        }
+      ],
+      "history": [
+        {
+          "id": "hist-001",
+          "date": "February 15, 2025",
+          "service": "Individual Adult Counselling",
+          "practitioner": "Dr. Sarah Johnson",
+          "location": "Main Office",
+          "format": "In-person",
+          "status": "Completed"
+        },
+        {
+          "id": "hist-002",
+          "date": "January 30, 2025",
+          "service": "Individual Adult Counselling",
+          "practitioner": "Dr. Sarah Johnson",
+          "location": "Main Office",
+          "format": "Virtual",
+          "status": "Completed"
+        },
+        {
+          "id": "hist-003",
+          "date": "January 8, 2025",
+          "service": "Individual Adult Counselling",
+          "practitioner": "Michael Chen",
+          "location": "Main Office",
+          "format": "In-person",
+          "status": "Cancelled"
+        }
+      ],
+      "waitlist": []
+    }
+  }
+  
+  // src/mock-api-data/exercise-data.json
+  {
+    "exercises": [
+      {
+        "id": "ex-001",
+        "title": "Mindful Breathing",
+        "category": "mindfulness",
+        "description": "A guided breathing exercise to help reduce anxiety and increase present-moment awareness. This exercise walks you through a simple but effective technique that can be used anywhere to quickly center yourself and reduce stress.",
+        "duration": 10,
+        "image": "https://images.unsplash.com/photo-1506126613408-eca07ce68773?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
+        "link": "#"
+      },
+      {
+        "id": "ex-002",
+        "title": "Progressive Muscle Relaxation",
+        "category": "relaxation",
+        "description": "This guided exercise helps you systematically tense and relax different muscle groups throughout your body. It's particularly helpful for reducing physical tension that often accompanies stress and anxiety.",
+        "duration": 15,
+        "image": "https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
+        "link": "#"
+      },
+      {
+        "id": "ex-003",
+        "title": "Thought Record Journal",
+        "category": "cognitive",
+        "description": "An interactive journal exercise based on cognitive behavioral therapy principles. This tool helps you identify and challenge negative thought patterns by examining the evidence for and against your thoughts, and developing more balanced perspectives.",
+        "duration": 20,
+        "image": "https://images.unsplash.com/photo-1517842645767-c639042777db?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
+        "link": "#"
+      },
+      {
+        "id": "ex-004",
+        "title": "Values Clarification",
+        "category": "personal growth",
+        "description": "This reflective exercise helps you identify and prioritize your core values, which can guide decision-making and provide a sense of meaning and purpose. The exercise includes a comprehensive list of values and guided questions to help you understand what matters most to you.",
+        "duration": 25,
+        "image": "https://images.unsplash.com/photo-1492681290082-e932832941e6?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
+        "link": "#"
+      },
+      {
+        "id": "ex-005",
+        "title": "Gratitude Practice",
+        "category": "positive psychology",
+        "description": "A guided exercise to help you cultivate gratitude by reflecting on and recording things you appreciate in your life. Regular gratitude practice has been shown to increase positive emotions, reduce stress, and improve overall wellbeing.",
+        "duration": 10,
+        "image": "https://images.unsplash.com/photo-1490731727228-d56f39758d0e?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
+        "link": "#"
+      },
+      {
+        "id": "ex-006",
+        "title": "Emotional Awareness Check-in",
+        "category": "emotional regulation",
+        "description": "This exercise guides you through identifying and naming your emotions, recognizing how they manifest in your body, and developing strategies for managing intense feelings. Regular practice can improve emotional intelligence and self-regulation skills.",
+        "duration": 15,
+        "image": "https://images.unsplash.com/photo-1476231682828-37e571bc172f?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
+        "link": "#"
+      }
+    ]
+  }
+  
+  // src/mock-api-data/practice-info.json
+  {
+    "practice": {
+      "name": "Mindful Wellness Center",
+      "tagline": "Compassionate mental health care for your journey to wellness",
+      "description": "At Mindful Wellness Center, we believe in a holistic approach to mental health. Our dedicated team of professionals provides evidence-based therapy in a warm, supportive environment.",
+      "yearEstablished": 2015,
+      "phoneNumber": "(555) 123-4567",
+      "email": "info@mindfulwellnesscenter.com",
+      "website": "www.mindfulwellnesscenter.com",
+      "socialMedia": {
+        "facebook": "https://facebook.com/mindfulwellnesscenter",
+        "instagram": "https://instagram.com/mindfulwellness",
+        "twitter": "https://twitter.com/mindfulwellness"
+      },
+      "locations": [
+        {
+          "id": "loc-001",
+          "name": "Main Office",
+          "address": {
+            "street": "123 Healing Way",
+            "suite": "Suite 201",
+            "city": "Portland",
+            "state": "OR",
+            "zipCode": "97204"
+          },
+          "phone": "(555) 123-4567",
+          "hours": [
+            { "day": "Monday", "open": "8:00 AM", "close": "7:00 PM" },
+            { "day": "Tuesday", "open": "8:00 AM", "close": "7:00 PM" },
+            { "day": "Wednesday", "open": "8:00 AM", "close": "7:00 PM" },
+            { "day": "Thursday", "open": "8:00 AM", "close": "7:00 PM" },
+            { "day": "Friday", "open": "8:00 AM", "close": "6:00 PM" },
+            { "day": "Saturday", "open": "9:00 AM", "close": "2:00 PM" },
+            { "day": "Sunday", "open": "Closed", "close": "Closed" }
+          ],
+          "virtualAvailable": true
+        },
+        {
+          "id": "loc-002",
+          "name": "Riverside Clinic",
+          "address": {
+            "street": "456 Riverfront Avenue",
+            "suite": "Suite 102",
+            "city": "Portland",
+            "state": "OR",
+            "zipCode": "97209"
+          },
+          "phone": "(555) 987-6543",
+          "hours": [
+            { "day": "Monday", "open": "9:00 AM", "close": "6:00 PM" },
+            { "day": "Tuesday", "open": "9:00 AM", "close": "6:00 PM" },
+            { "day": "Wednesday", "open": "9:00 AM", "close": "6:00 PM" },
+            { "day": "Thursday", "open": "9:00 AM", "close": "6:00 PM" },
+            { "day": "Friday", "open": "9:00 AM", "close": "5:00 PM" },
+            { "day": "Saturday", "open": "Closed", "close": "Closed" },
+            { "day": "Sunday", "open": "Closed", "close": "Closed" }
+          ],
+          "virtualAvailable": true
+        }
+      ]
+    }
+  }
+  
+  // src/mock-api-data/site-config.json
+  {
+    "siteConfiguration": {
+      "colorScheme": {
+        "primary": "#2D6A4F",
+        "secondary": "#74C69D",
+        "accent": "#B7E4C7",
+        "text": "#333333",
+        "background": "#FFFFFF",
+        "lightBackground": "#F8FAF9"
+      },
+      "fonts": {
+        "headings": "Montserrat, sans-serif",
+        "body": "Open Sans, sans-serif"
+      },
+      "seo": {
+        "metaTitle": "Mindful Wellness Center | Mental Health Services in Portland, OR",
+        "metaDescription": "Compassionate mental health care in Portland. Our team of therapists provides evidence-based treatment for anxiety, depression, trauma, and more."
+      },
+      "logoVariants": {
+        "primary": "/images/logo-primary.png",
+        "white": "/images/logo-white.png",
+        "favicon": "/images/favicon.ico"
+      }
+    }
+  }

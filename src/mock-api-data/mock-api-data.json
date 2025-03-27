@@ -1,0 +1,593 @@
+{
+{
+  "siteConfiguration": {
+    "colorScheme": {
+      "primary": "#2D6A4F",
+      "secondary": "#74C69D",
+      "accent": "#B7E4C7",
+      "text": "#333333",
+      "background": "#FFFFFF",
+      "lightBackground": "#F8FAF9"
+    },
+    "fonts": {
+      "headings": "Montserrat, sans-serif",
+      "body": "Open Sans, sans-serif"
+    },
+    "seo": {
+      "metaTitle": "Mindful Wellness Center | Mental Health Services in Portland, OR",
+      "metaDescription": "Compassionate mental health care in Portland. Our team of therapists provides evidence-based treatment for anxiety, depression, trauma, and more.",
+      "keywords": [
+        "therapy Portland",
+        "mental health Portland",
+        "anxiety treatment",
+        "depression therapy",
+        "couples counseling",
+        "family therapy",
+        "PTSD treatment",
+        "child therapy",
+        "Portland psychologist",
+        "Portland therapist"
+      ],
+      "googleAnalyticsId": "UA-123456789-1",
+      "structuredData": {
+        "type": "MedicalBusiness",
+        "includeOrganizationSchema": true,
+        "includePractitionerSchemas": true,
+        "includeLocationSchemas": true
+      }
+    },
+    "domain": "mindfulwellnesscenter.com",
+    "logoVariants": {
+      "primary": "/images/logo-primary.png",
+      "white": "/images/logo-white.png",
+      "favicon": "/images/favicon.ico"
+    },
+    "contactFormSettings": {
+      "recipientEmail": "info@mindfulwellnesscenter.com",
+      "autoResponderEnabled": true,
+      "autoResponderSubject": "Thank you for contacting Mindful Wellness Center",
+      "autoResponderTemplate": "templates/contact-autoresponder.html",
+      "formFields": [
+        "name",
+        "email",
+        "phone",
+        "preferredContactMethod",
+        "message",
+        "newClientStatus",
+        "insuranceProvider"
+      ]
+    },
+    "cookieConsentSettings": {
+      "enabled": true,
+      "policyLink": "/privacy-policy",
+      "necessaryCookiesOnly": false
+    },
+    "complianceSettings": {
+      "hipaaPrivacyNoticeLink": "/hipaa-privacy-notice",
+      "termsOfServiceLink": "/terms-of-service",
+      "accessibilityStatement": "/accessibility"
+    }
+  },
+  
+  "practice": {
+    "name": "Mindful Wellness Center",
+    "tagline": "Compassionate mental health care for your journey to wellness",
+    "description": "At Mindful Wellness Center, we believe in a holistic approach to mental health. Our dedicated team of professionals provides evidence-based therapy in a warm, supportive environment. Whether you're facing challenges with anxiety, depression, relationships, or life transitions, we're here to help you develop the tools for lasting wellbeing.",
+    "yearEstablished": 2015,
+    "logo": "/images/logo.png",
+    "phoneNumber": "(555) 123-4567",
+    "email": "info@mindfulwellnesscenter.com",
+    "website": "www.mindfulwellnesscenter.com",
+    "socialMedia": {
+      "facebook": "https://facebook.com/mindfulwellnesscenter",
+      "instagram": "https://instagram.com/mindfulwellness",
+      "twitter": "https://twitter.com/mindfulwellness",
+      "linkedin": "https://linkedin.com/company/mindfulwellnesscenter"
+    },
+    "officeImages": [
+      "/images/office/reception.jpg",
+      "/images/office/therapy-room-1.jpg",
+      "/images/office/therapy-room-2.jpg",
+      "/images/office/group-room.jpg",
+      "/images/office/exterior.jpg"
+    ]
+  },
+  "locations": [
+    {
+      "id": "loc-001",
+      "name": "Main Office",
+      "address": {
+        "street": "123 Healing Way",
+        "suite": "Suite 201",
+        "city": "Portland",
+        "state": "OR",
+        "zipCode": "97204",
+        "country": "USA"
+      },
+      "coordinates": {
+        "latitude": 45.5231,
+        "longitude": -122.6765
+      },
+      "phone": "(555) 123-4567",
+      "email": "info@mindfulwellnesscenter.com",
+      "accessibility": ["Wheelchair accessible", "Gender-neutral restrooms", "Service animals welcome"],
+      "parkingInfo": "Free parking available in the building garage. Street parking also available.",
+      "publicTransportInfo": "Accessible via bus routes 10 and 14. Two blocks from the Green Line light rail station.",
+      "hours": [
+        { "day": "Monday", "open": "8:00 AM", "close": "7:00 PM" },
+        { "day": "Tuesday", "open": "8:00 AM", "close": "7:00 PM" },
+        { "day": "Wednesday", "open": "8:00 AM", "close": "7:00 PM" },
+        { "day": "Thursday", "open": "8:00 AM", "close": "7:00 PM" },
+        { "day": "Friday", "open": "8:00 AM", "close": "6:00 PM" },
+        { "day": "Saturday", "open": "9:00 AM", "close": "2:00 PM" },
+        { "day": "Sunday", "open": "Closed", "close": "Closed" }
+      ],
+      "virtualAvailable": true
+    },
+    {
+      "id": "loc-002",
+      "name": "Riverside Clinic",
+      "address": {
+        "street": "456 Riverfront Avenue",
+        "suite": "Suite 102",
+        "city": "Portland",
+        "state": "OR",
+        "zipCode": "97209",
+        "country": "USA"
+      },
+      "coordinates": {
+        "latitude": 45.5322,
+        "longitude": -122.6721
+      },
+      "phone": "(555) 987-6543",
+      "email": "riverside@mindfulwellnesscenter.com",
+      "accessibility": ["Wheelchair accessible", "Gender-neutral restrooms", "Sensory-friendly waiting area"],
+      "parkingInfo": "Validated parking available in adjacent garage.",
+      "publicTransportInfo": "One block from bus routes 20 and 21.",
+      "hours": [
+        { "day": "Monday", "open": "9:00 AM", "close": "6:00 PM" },
+        { "day": "Tuesday", "open": "9:00 AM", "close": "6:00 PM" },
+        { "day": "Wednesday", "open": "9:00 AM", "close": "6:00 PM" },
+        { "day": "Thursday", "open": "9:00 AM", "close": "6:00 PM" },
+        { "day": "Friday", "open": "9:00 AM", "close": "5:00 PM" },
+        { "day": "Saturday", "open": "Closed", "close": "Closed" },
+        { "day": "Sunday", "open": "Closed", "close": "Closed" }
+      ],
+      "virtualAvailable": true
+    }
+  ],
+  "practitioners": [
+    {
+      "id": "prac-001",
+      "name": {
+        "prefix": "Dr.",
+        "firstName": "Sarah",
+        "lastName": "Johnson",
+        "credentials": "PhD, LCSW"
+      },
+      "role": "Clinical Director",
+      "profileImage": "/images/practitioners/sarah-johnson.jpg",
+      "shortBio": "Dr. Johnson specializes in anxiety disorders and trauma-informed care with over 15 years of experience.",
+      "longBio": "Dr. Sarah Johnson is a licensed clinical psychologist with extensive training in cognitive-behavioral therapy and trauma-informed approaches. She completed her doctorate at Stanford University and her clinical internship at the VA Medical Center. Dr. Johnson takes an integrative approach, combining evidence-based techniques with mindfulness practices to help clients develop resilience and emotional well-being. She is passionate about making mental health care accessible and reducing stigma through community education.",
+      "education": [
+        {
+          "degree": "PhD in Clinical Psychology",
+          "institution": "Stanford University",
+          "year": 2008
+        },
+        {
+          "degree": "Master of Science in Psychology",
+          "institution": "University of Oregon",
+          "year": 2004
+        },
+        {
+          "degree": "Bachelor of Arts in Psychology",
+          "institution": "University of Washington",
+          "year": 2002
+        }
+      ],
+      "licenses": [
+        {
+          "name": "Licensed Clinical Psychologist",
+          "state": "Oregon",
+          "number": "C12345",
+          "expirationDate": "2025-06-30"
+        }
+      ],
+      "specialties": [
+        "Anxiety Disorders",
+        "Post-Traumatic Stress Disorder",
+        "Depression",
+        "Grief and Loss",
+        "Life Transitions"
+      ],
+      "approaches": [
+        "Cognitive Behavioral Therapy (CBT)",
+        "Eye Movement Desensitization and Reprocessing (EMDR)",
+        "Mindfulness-Based Cognitive Therapy",
+        "Trauma-Focused Therapy"
+      ],
+      "languages": ["English", "Spanish"],
+      "acceptingNewClients": true,
+      "ageGroupsFocus": ["Adults", "Older Adults"],
+      "insuranceAccepted": [
+        "Aetna",
+        "Blue Cross Blue Shield",
+        "Cigna",
+        "Medicare",
+        "United Healthcare"
+      ],
+      "sessionTypes": ["Individual", "Group"],
+      "sessionFormat": ["In-person", "Virtual"],
+      "locations": ["loc-001", "loc-002"]
+    },
+    {
+      "id": "prac-002",
+      "name": {
+        "prefix": "",
+        "firstName": "Michael",
+        "lastName": "Chen",
+        "credentials": "LPC, NCC"
+      },
+      "role": "Licensed Professional Counselor",
+      "profileImage": "/images/practitioners/michael-chen.jpg",
+      "shortBio": "Michael specializes in relationship counseling and helping clients navigate cultural identity issues.",
+      "longBio": "Michael Chen is a Licensed Professional Counselor who believes in a client-centered approach that honors each person's unique experiences and cultural background. With over a decade of experience in relationship counseling, Michael helps individuals and couples build healthier communication patterns and deeper connections. His background in multicultural counseling makes him particularly attuned to issues related to cultural identity and intergenerational dynamics. Michael creates a safe, non-judgmental space where clients can explore their challenges and develop practical strategies for growth.",
+      "education": [
+        {
+          "degree": "Master of Arts in Counseling Psychology",
+          "institution": "Lewis & Clark College",
+          "year": 2011
+        },
+        {
+          "degree": "Bachelor of Science in Psychology",
+          "institution": "University of California, Berkeley",
+          "year": 2008
+        }
+      ],
+      "licenses": [
+        {
+          "name": "Licensed Professional Counselor",
+          "state": "Oregon",
+          "number": "C67890",
+          "expirationDate": "2024-11-15"
+        }
+      ],
+      "certifications": [
+        {
+          "name": "National Certified Counselor",
+          "organization": "National Board for Certified Counselors",
+          "expirationDate": "2025-02-28"
+        },
+        {
+          "name": "Gottman Method Couples Therapy - Level 3",
+          "organization": "The Gottman Institute",
+          "expirationDate": null
+        }
+      ],
+      "specialties": [
+        "Couples Therapy",
+        "Relationship Issues",
+        "Cultural Identity",
+        "LGBTQ+ Affirming Therapy",
+        "Family Conflict"
+      ],
+      "approaches": [
+        "Gottman Method",
+        "Emotionally Focused Therapy",
+        "Narrative Therapy",
+        "Solution-Focused Brief Therapy"
+      ],
+      "languages": ["English", "Mandarin Chinese"],
+      "acceptingNewClients": true,
+      "ageGroupsFocus": ["Young Adults", "Adults"],
+      "insuranceAccepted": [
+        "Aetna",
+        "Blue Cross Blue Shield",
+        "Cigna",
+        "Kaiser Permanente",
+        "Providence"
+      ],
+      "sessionTypes": ["Individual", "Couples"],
+      "sessionFormat": ["In-person", "Virtual"],
+      "locations": ["loc-001"]
+    },
+    {
+      "id": "prac-003",
+      "name": {
+        "prefix": "",
+        "firstName": "Jasmine",
+        "lastName": "Williams",
+        "credentials": "LMFT"
+      },
+      "role": "Licensed Marriage and Family Therapist",
+      "profileImage": "/images/practitioners/jasmine-williams.jpg",
+      "shortBio": "Jasmine specializes in family therapy and play therapy for children, with a focus on building resilience.",
+      "longBio": "Jasmine Williams is a Licensed Marriage and Family Therapist who specializes in working with children, adolescents, and families. With a warm and engaging approach, she creates a supportive environment where young clients feel comfortable expressing themselves through play, art, and conversation. Jasmine has extensive experience helping families navigate challenges such as divorce, blended family dynamics, behavioral issues, and developmental transitions. She employs a strength-based perspective, helping clients recognize and build upon their existing resources while developing new skills for emotional regulation and effective communication.",
+      "education": [
+        {
+          "degree": "Master of Science in Marriage and Family Therapy",
+          "institution": "Portland State University",
+          "year": 2015
+        },
+        {
+          "degree": "Bachelor of Arts in Child Development",
+          "institution": "Spelman College",
+          "year": 2012
+        }
+      ],
+      "licenses": [
+        {
+          "name": "Licensed Marriage and Family Therapist",
+          "state": "Oregon",
+          "number": "M54321",
+          "expirationDate": "2025-09-30"
+        }
+      ],
+      "certifications": [
+        {
+          "name": "Registered Play Therapist",
+          "organization": "Association for Play Therapy",
+          "expirationDate": "2024-08-31"
+        }
+      ],
+      "specialties": [
+        "Child and Adolescent Therapy",
+        "Family Systems",
+        "Parenting Support",
+        "Behavioral Issues",
+        "Adjustment Disorders"
+      ],
+      "approaches": [
+        "Play Therapy",
+        "Family Systems Therapy",
+        "Cognitive Behavioral Play Therapy",
+        "Expressive Arts Therapy"
+      ],
+      "languages": ["English"],
+      "acceptingNewClients": true,
+      "ageGroupsFocus": ["Children", "Adolescents", "Families"],
+      "insuranceAccepted": [
+        "Aetna",
+        "Blue Cross Blue Shield",
+        "Cigna",
+        "Oregon Health Plan",
+        "UnitedHealthcare"
+      ],
+      "sessionTypes": ["Individual", "Family", "Group"],
+      "sessionFormat": ["In-person", "Virtual"],
+      "locations": ["loc-001", "loc-002"]
+    }
+  ],
+  "testimonials": [
+    {
+      "id": "test-001",
+      "text": "Dr. Johnson helped me work through my anxiety in ways I never thought possible. I now have tools to manage stressful situations and my quality of life has improved tremendously.",
+      "attribution": "Former client, Anxiety Treatment",
+      "rating": 5
+    },
+    {
+      "id": "test-002",
+      "text": "After years of struggling in our marriage, Michael helped us learn how to truly communicate with each other. We're more connected now than we've been in years.",
+      "attribution": "Couple, Marriage Counseling",
+      "rating": 5
+    },
+    {
+      "id": "test-003",
+      "text": "Our daughter was having a difficult time processing grief after a family loss. Jasmine's play therapy approach gave her a way to express her feelings and start healing.",
+      "attribution": "Parent of 8-year-old client",
+      "rating": 5
+    },
+    {
+      "id": "test-004",
+      "text": "The trauma therapy at Mindful Wellness literally changed my life. I finally feel like I'm moving forward instead of being stuck in the past.",
+      "attribution": "Client, Trauma Therapy",
+      "rating": 5
+    },
+    {
+      "id": "test-005",
+      "text": "The depression group has been so valuable - not just the therapeutic techniques, but realizing I'm not alone in my struggles.",
+      "attribution": "Group Therapy Participant",
+      "rating": 4
+    }
+  ],
+  
+  "faqs": [
+    {
+      "id": "faq-001",
+      "question": "What can I expect in my first therapy session?",
+      "answer": "Your first session is primarily an intake appointment where your therapist will get to know you and your concerns. You'll discuss what brings you to therapy, your background, and your goals. Your therapist will explain their approach and how they might work with your specific situation. It's also an opportunity for you to ask questions and determine if the therapist is a good fit for your needs."
+    },
+    {
+      "id": "faq-002",
+      "question": "How long does therapy typically last?",
+      "answer": "The length of therapy varies widely depending on your specific goals, the nature of your concerns, and the type of therapy. Some focused interventions might last 8-12 sessions, while more complex issues might benefit from longer-term work. Many clients attend weekly sessions for a few months, then taper to less frequent visits as they progress. Your therapist will discuss recommendations for your situation and adjust the plan as needed."
+    },
+    {
+      "id": "faq-003",
+      "question": "Is therapy confidential?",
+      "answer": "Yes, therapy is confidential with a few specific exceptions required by law. These exceptions include situations involving immediate danger to yourself or others, suspected abuse of children or vulnerable adults, and certain legal proceedings. Your therapist will explain confidentiality and its limits during your first session."
+    },
+    {
+      "id": "faq-004",
+      "question": "How do I know if I need therapy?",
+      "answer": "You might consider therapy if you're experiencing persistent distress, feeling overwhelmed, noticing significant changes in mood or behavior, having difficulty with relationships, or struggling to cope with life transitions. Therapy can be beneficial not only for addressing specific mental health concerns but also for personal growth, improved relationships, and enhanced wellbeing."
+    },
+    {
+      "id": "faq-005",
+      "question": "Do you accept insurance?",
+      "answer": "Yes, we accept several major insurance plans, including Aetna, Blue Cross Blue Shield, Cigna, UnitedHealthcare, and more. We recommend contacting your insurance provider to verify your specific coverage for mental health services. Our administrative team is also available to help answer insurance questions."
+    },
+    {
+      "id": "faq-006",
+      "question": "What's the difference between a psychiatrist, psychologist, and therapist?",
+      "answer": "Psychiatrists are medical doctors who can prescribe medication and sometimes provide therapy. Psychologists typically have doctoral degrees (PhD, PsyD) and provide therapy and psychological testing but cannot prescribe medication in most states. Therapists may include licensed counselors, social workers, and marriage and family therapists, all of whom provide various forms of talk therapy but cannot prescribe medication. All these professionals work together in the mental health field, often referring to each other as needed."
+    },
+    {
+      "id": "faq-007",
+      "question": "Do you offer virtual therapy sessions?",
+      "answer": "Yes, we offer secure, HIPAA-compliant video sessions for most of our services. Virtual therapy (also called telehealth) makes therapy accessible regardless of location, transportation limitations, or other barriers to in-person care. We use a secure platform designed specifically for healthcare, and your therapist will help you get set up prior to your first virtual appointment."
+    }
+  ],
+  
+  "insuranceAndPayment": {
+    "acceptedInsurancePlans": [
+      {
+        "provider": "Aetna",
+        "plans": ["Standard", "Premium", "Medicare Advantage"]
+      },
+      {
+        "provider": "Blue Cross Blue Shield",
+        "plans": ["PPO", "HMO", "Federal Employee Program"]
+      },
+      {
+        "provider": "Cigna",
+        "plans": ["Open Access Plus", "Performance", "Behavioral Health"]
+      },
+      {
+        "provider": "UnitedHealthcare",
+        "plans": ["Choice", "Options PPO", "Medicare Advantage"]
+      },
+      {
+        "provider": "Medicare",
+        "plans": ["Part B", "Supplement Plans"]
+      },
+      {
+        "provider": "Oregon Health Plan (Medicaid)",
+        "plans": ["All Plans"]
+      }
+    ],
+    "selfPayOptions": {
+      "individualTherapy": {
+        "initialSession": 175,
+        "standardSession": 150,
+        "extendedSession": 200
+      },
+      "couplesTherapy": {
+        "initialSession": 200,
+        "standardSession": 175,
+        "extendedSession": 250
+      },
+      "groupTherapy": {
+        "perSession": 60
+      },
+      "psychologicalAssessment": {
+        "perHour": 200
+      }
+    },
+    "slidingScaleAvailable": true,
+    "slidingScaleDetails": "We offer a limited number of sliding scale slots based on financial need. Please inquire with our intake coordinator about current availability.",
+    "paymentMethods": ["Credit/Debit Card", "HSA/FSA Cards", "Check", "Cash"],
+    "paymentPolicies": "Payment is due at the time of service. We require 24 hours notice for cancellations to avoid a late cancellation fee."
+  },
+  
+  "accreditations": [
+    {
+      "organization": "American Psychological Association",
+      "type": "Professional Membership",
+      "validUntil": null
+    },
+    {
+      "organization": "National Association of Social Workers",
+      "type": "Professional Membership",
+      "validUntil": null
+    },
+    {
+      "organization": "American Association for Marriage and Family Therapy",
+      "type": "Professional Membership",
+      "validUntil": null
+    },
+    {
+      "organization": "HIPAA Compliance Certification",
+      "type": "Practice Standards",
+      "validUntil": "2025-12-31"
+    },
+    {
+      "organization": "Oregon Board of Psychology",
+      "type": "State Licensing Board",
+      "validUntil": null
+    }
+  ],
+  
+  "services": [
+    {
+      "id": "serv-001",
+      "name": "Individual Therapy",
+      "description": "One-on-one therapy sessions tailored to address your specific mental health needs and goals. Our therapists use evidence-based approaches to help you develop insights, coping strategies, and paths to personal growth.",
+      "image": "/images/services/individual-therapy.jpg",
+      "duration": "50 minutes",
+      "availableVirtually": true,
+      "forAgeGroups": ["Adolescents", "Young Adults", "Adults", "Older Adults"]
+    },
+    {
+      "id": "serv-002",
+      "name": "Couples Therapy",
+      "description": "Therapy for partners seeking to improve their relationship, enhance communication, resolve conflicts, or navigate transitions. Our approach helps couples build stronger connections while honoring individual needs.",
+      "image": "/images/services/couples-therapy.jpg",
+      "duration": "80 minutes",
+      "availableVirtually": true,
+      "forAgeGroups": ["Young Adults", "Adults", "Older Adults"]
+    },
+    {
+      "id": "serv-003",
+      "name": "Family Therapy",
+      "description": "Therapy that brings family members together to work through challenges, improve communication patterns, and strengthen relationships. We create a supportive environment where all voices can be heard.",
+      "image": "/images/services/family-therapy.jpg",
+      "duration": "80 minutes",
+      "availableVirtually": true,
+      "forAgeGroups": ["Children", "Adolescents", "Young Adults", "Adults", "Older Adults"]
+    },
+    {
+      "id": "serv-004",
+      "name": "Child & Play Therapy",
+      "description": "Specialized therapy for children using play, art, and other developmentally appropriate techniques to help young people express feelings, process experiences, and develop healthy coping skills.",
+      "image": "/images/services/play-therapy.jpg",
+      "duration": "45 minutes",
+      "availableVirtually": true,
+      "forAgeGroups": ["Children", "Adolescents"]
+    },
+    {
+      "id": "serv-005",
+      "name": "Anxiety Treatment",
+      "description": "Specialized therapy for anxiety disorders using evidence-based approaches like Cognitive Behavioral Therapy and mindfulness techniques to reduce symptoms and build resilience.",
+      "image": "/images/services/anxiety-treatment.jpg",
+      "duration": "50 minutes",
+      "availableVirtually": true,
+      "forAgeGroups": ["Adolescents", "Young Adults", "Adults", "Older Adults"]
+    },
+    {
+      "id": "serv-006",
+      "name": "Depression Treatment",
+      "description": "Comprehensive treatment for depression using a combination of therapeutic approaches to address symptoms, identify contributing factors, and develop strategies for recovery and emotional wellness.",
+      "image": "/images/services/depression-treatment.jpg",
+      "duration": "50 minutes",
+      "availableVirtually": true,
+      "forAgeGroups": ["Adolescents", "Young Adults", "Adults", "Older Adults"]
+    },
+    {
+      "id": "serv-007",
+      "name": "Trauma Therapy",
+      "description": "Specialized therapy for individuals who have experienced trauma, using approaches such as EMDR, trauma-focused CBT, and somatic techniques to process experiences and reduce their impact on daily life.",
+      "image": "/images/services/trauma-therapy.jpg",
+      "duration": "50 minutes",
+      "availableVirtually": true,
+      "forAgeGroups": ["Adolescents", "Young Adults", "Adults", "Older Adults"]
+    },
+    {
+      "id": "serv-008",
+      "name": "Group Therapy",
+      "description": "Therapeutic groups focused on specific topics or shared experiences, offering support, insight, and connection with others facing similar challenges. Our groups are facilitated by experienced therapists in a safe, confidential environment.",
+      "image": "/images/services/group-therapy.jpg",
+      "duration": "90 minutes",
+      "availableVirtually": true,
+      "forAgeGroups": ["Young Adults", "Adults", "Older Adults"]
+    },
+    {
+      "id": "serv-009",
+      "name": "Psychological Assessment",
+      "description": "Comprehensive psychological evaluations to assess cognitive functioning, personality, emotional well-being, or specific conditions such as ADHD, learning disorders, or autism spectrum disorders.",
+      "image": "/images/services/psychological-assessment.jpg",
+      "duration": "Varies (typically 2-4 hours over multiple sessions)",
+      "availableVirtually": false,
+      "forAgeGroups": ["Children", "Adolescents", "Young Adults", "Adults", "Older Adults"]
+    }
